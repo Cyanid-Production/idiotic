@@ -36,7 +36,7 @@ func _on_quit_button_pressed():
 	get_tree().quit()
 
 func add_player(peer_id : int, is_host : bool = true):
-	get_tree().get_current_scene().add_child(preload("res://Scenes/Map1.tscn").instantiate(), true)
+	get_tree().get_current_scene().add_child(preload("res://Scenes/Map1.tscn").instantiate())
 	$"../MultiplayerSpawner".spawn_path = "../Map"
 	var new_player = GameManager.get_object("player")
 	new_player.name = str(peer_id)

@@ -32,8 +32,8 @@ func change_health(hlt:float):
 
 @rpc("any_peer", "call_local")
 func use(usr):
-	if usr.inventory_items.has(GameManager.get_item("planks")) and health <= 80.0:
-		usr.remove_from_inventory("planks")
+	if GameManager.get_player(usr).inventory_items.has(GameManager.get_item("planks")) and health <= 80.0:
+		GameManager.get_player(usr).remove_from_inventory("planks")
 		change_health(20.0)
 
 func take_damage(dmg:float):
