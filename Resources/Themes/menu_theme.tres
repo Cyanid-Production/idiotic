@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cmbofmpyce526"]
+
+[ext_resource type="FontFile" uid="uid://1bmcp2r7baky" path="res://Resources/Fonts/Daneehand.ttf" id="1_gkt80"]
+
+[resource]
+Button/font_sizes/font_size = 30
+Button/fonts/font = ExtResource("1_gkt80")
+MarginContainer/constants/margin_bottom = 35
+MarginContainer/constants/margin_left = 35
+MarginContainer/constants/margin_right = 35
+MarginContainer/constants/margin_top = 35

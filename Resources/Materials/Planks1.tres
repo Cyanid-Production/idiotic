@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://cjaw88t6eskbm"]
+
+[ext_resource type="Texture2D" uid="uid://b11mx5k83dxa4" path="res://Textures/Objects/Planks1/planks_arm.png" id="1_18by1"]
+[ext_resource type="Texture2D" uid="uid://dvd3u0g665wjk" path="res://Textures/Objects/Planks1/planks_ao.png" id="2_r0xnm"]
+[ext_resource type="Texture2D" uid="uid://c240gsnq76les" path="res://Textures/Objects/Planks1/planks_normal.png" id="3_m7q4x"]
+
+[resource]
+albedo_texture = ExtResource("1_18by1")
+normal_enabled = true
+normal_texture = ExtResource("3_m7q4x")
+ao_enabled = true
+ao_texture = ExtResource("2_r0xnm")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true

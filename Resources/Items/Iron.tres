@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://bx7e8bf0xj1ol"]
+
+[ext_resource type="BoxMesh" uid="uid://cipy5dwhopg6o" path="res://Resources/Meshes/PickableIron.tres" id="1_1uhvt"]
+[ext_resource type="Script" uid="uid://burv2cpscxnkr" path="res://Scripts/Data/item_data.gd" id="1_8ywii"]
+[ext_resource type="Texture2D" uid="uid://dpthsw200in46" path="res://Textures/UI/Items/iron_icon.png" id="2_0p7ev"]
+
+[resource]
+script = ExtResource("1_8ywii")
+name_code = "IRONNAME"
+id = "iron"
+texture = ExtResource("2_0p7ev")
+type = 0
+description_code = "IRONDESC"
+model = ExtResource("1_1uhvt")
+metadata/_custom_type_script = "uid://burv2cpscxnkr"

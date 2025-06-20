@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgko8g3r8fa3q"]
+
+[ext_resource type="Script" uid="uid://dbsjm8olhgwy" path="res://Scripts/Interactables/pickable_item.gd" id="1_bmh5l"]
+[ext_resource type="BoxMesh" uid="uid://dflmehxm24fnx" path="res://Resources/Meshes/PickablePlanks.tres" id="3_frhwy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_frhwy"]
+size = Vector3(0.75, 0.05, 0.75)
+
+[node name="PickableItem" type="StaticBody3D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_bmh5l")
+
+[node name="Model" type="MeshInstance3D" parent="."]
+mesh = ExtResource("3_frhwy")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_frhwy")
+
+[node name="PickupSound" type="AudioStreamPlayer3D" parent="."]

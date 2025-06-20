@@ -1,0 +1,103 @@
+extends Node
+
+
+signal on_game_started
+
+var players_amount : int = 0
+
+var current_player : CharacterBody3D
+var players_array : Array
+var enemies_array : Array
+var on_host : bool
+
+var current_wave : int = 0
+var wave_enemy_amount = 2
+var wave_countdown : int = 30
+
+@onready var wave_timer : Timer = $WaveTimer
+
+var preloaded_objects = {
+	### CHARACTERS ###
+	"player" : preload("res://Objects/Player.tscn"),
+	"zombie" : preload("res://Objects/Zombie.tscn"),
+	"corpse" : preload("res://Objects/Corpse.tscn"),
+	### TRAPS ###
+	"spiketrap1" : preload("res://Objects/Traps/SpikeTrap1.tscn"),
+	"spiketrap2" : preload("res://Objects/Traps/SpikeTrap2.tscn"),
+	"spiketrap3" : preload("res://Objects/Traps/SpikeTrap3.tscn"),
+	### WEAPONS ###
+	"hunterrifle" : preload("res://Objects/Weapons/SKSrifle.tscn"),
+	"ak47" : preload("res://Objects/Weapons/AK47.tscn"),
+	### OTHER ###
+	"bullethole" : preload("res://Objects/Decor/BulletHole.tscn"),
+	"bloodsplatter" : preload("res://Objects/Effects/BloodSplatter.tscn")
+}
+
+var player_items : Dictionary = {
+	### MATERIALS ###
+	"cloth" : preload("res://Resources/Items/Cloth.tres"),
+	"petrol" : preload("res://Resources/Items/Petrol.tres"),
+	"planks" : preload("res://Resources/Items/Planks.tres"),
+	"iron" : preload("res://Resources/Items/Iron.tres"),
+	### CRAFTABLES ###
+	"spiketrap1" : preload("res://Resources/Traps/SpikeTrap1.tres"),
+	"spiketrap2" : preload("res://Resources/Traps/SpikeTrap2.tres"),
+	"spiketrap3" : preload("res://Resources/Traps/SpikeTrap3.tres")
+}
+
+
+func _ready():
+	wave_timer.wait_time = wave_countdown
+
+func get_object(key_to:String):
+	return preloaded_objects.get(key_to).instantiate()
+
+func get_item(key_to:String):
+	return player_items.get(key_to)
+
+@rpc("any_peer", "call_local")
+func start_game():
+	on_game_started.emit()
+	new_target()
+	get_parent().get_node("Test/Map/EnemySpawner/Timer").start()
+	notificate(load("res://Sounds/debug1.wav"))
+	set_soundtrack(load("res://Music/light-slaughter.ogg"),-5.0)
+
+func game_reset():
+	players_amount = 0
+	
+	current_wave = 0
+	wave_enemy_amount = 2
+	wave_countdown = 30
+
+func set_soundtrack(snd:AudioStream,vol:float=0.0,ptc:float=1.0):
+	$MusicPlayer.stream = snd
+	$MusicPlayer.volume_db = vol
+	$MusicPlayer.pitch_scale = ptc
+	$MusicPlayer.play()
+
+@rpc("any_peer", "call_local")
+func instasound(snd:AudioStream,caller:Node=self,vol:float=0.0,ptc:float=1.0):
+	var new_sound := AudioStreamPlayer.new()
+	new_sound.stream = snd
+	new_sound.volume_db = vol
+	new_sound.pitch_scale = ptc
+	caller.add_sibling(new_sound)
+
+@rpc("any_peer", "call_local")
+func instasound3D(caller,snd:AudioStream,vol:float=0.0,ptc:float=1.0):
+	var new_sound := AudioStreamPlayer3D.new()
+	new_sound.stream = snd
+	new_sound.volume_db = vol
+	new_sound.pitch_scale = ptc
+	caller.add_sibling(new_sound)
+
+func notificate(snd:AudioStream):
+	$NotificationPlayer.stream = snd
+	$NotificationPlayer.play()
+
+func new_target():
+	for i in enemies_array:
+		if players_array.is_empty():
+			return
+		i.find_target(false)

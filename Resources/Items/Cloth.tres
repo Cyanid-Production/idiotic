@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bs8i60tvax04m"]
+
+[ext_resource type="Script" uid="uid://burv2cpscxnkr" path="res://Scripts/Data/item_data.gd" id="1_lpcqb"]
+[ext_resource type="Texture2D" uid="uid://dkafn1spe4rjy" path="res://Textures/UI/Items/cloth_icon.png" id="2_toqva"]
+
+[resource]
+script = ExtResource("1_lpcqb")
+name_code = "CLOTHNAME"
+id = "cloth"
+texture = ExtResource("2_toqva")
+type = 0
+description_code = "CLOTHDESC"
+metadata/_custom_type_script = "uid://burv2cpscxnkr"

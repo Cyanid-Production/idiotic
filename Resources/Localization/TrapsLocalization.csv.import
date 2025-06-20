@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://cauqsatpfyrx"
+
+[deps]
+
+files=["res://Resources/Localization/TrapsLocalization.en.translation", "res://Resources/Localization/TrapsLocalization.ru.translation"]
+
+source_file="res://Resources/Localization/TrapsLocalization.csv"
+dest_files=["res://Resources/Localization/TrapsLocalization.en.translation", "res://Resources/Localization/TrapsLocalization.ru.translation"]
+
+[params]
+
+compress=true
+delimiter=0

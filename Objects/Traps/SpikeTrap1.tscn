@@ -1,0 +1,208 @@
+[gd_scene load_steps=15 format=3 uid="uid://dfda66i4xytj3"]
+
+[ext_resource type="Script" uid="uid://b7lrlj8k3a8v3" path="res://Scripts/Traps/spike_trap.gd" id="1_e6xts"]
+[ext_resource type="AudioStream" uid="uid://by5tvy55bj1i4" path="res://Sounds/Effects/spike_trap_attack.wav" id="2_txt2i"]
+[ext_resource type="Texture2D" uid="uid://cmvwrssytavqc" path="res://Textures/Objects/Planks3/planks_arm.png" id="2_x7o8r"]
+[ext_resource type="Texture2D" uid="uid://bsq51p081bumr" path="res://Textures/Objects/Planks3/planks_ao.png" id="3_3i5ha"]
+[ext_resource type="Texture2D" uid="uid://blck5qqh0vm3q" path="res://Textures/Objects/Planks3/planks_normal.png" id="3_ru0b7"]
+[ext_resource type="Texture2D" uid="uid://bsmyr7j351w7f" path="res://Textures/Objects/Planks3/planks_rough.png" id="5_uityt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e6xts"]
+size = Vector3(0.6, 0.2, 0.6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ru0b7"]
+albedo_color = Color(0.203922, 0.203922, 0.203922, 1)
+albedo_texture = ExtResource("2_x7o8r")
+normal_enabled = true
+normal_texture = ExtResource("3_ru0b7")
+ao_enabled = true
+ao_texture = ExtResource("3_3i5ha")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_txt2i"]
+albedo_texture = ExtResource("5_uityt")
+disable_receive_shadows = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m6msn"]
+size = Vector3(1, 0.1, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_m6msn"]
+data = PackedVector3Array(-0.05, 0.05, 0.5, 0.05, -0.05, 0.5, -0.05, -0.05, 0.5, -0.05, 0.05, -0.5, -0.05, -0.05, -0.5, 0.05, -0.05, -0.5, -0.05, 0.05, 0.5, -0.05, 0.05, -0.5, 0.05, -0.05, 0.5, -0.05, 0.05, -0.5, 0.05, -0.05, -0.5, 0.05, -0.05, 0.5, -0.05, 0.05, -0.5, -0.05, 0.05, 0.5, -0.05, -0.05, -0.5, -0.05, 0.05, 0.5, -0.05, -0.05, 0.5, -0.05, -0.05, -0.5, -0.05, -0.05, 0.5, 0.05, -0.05, 0.5, -0.05, -0.05, -0.5, 0.05, -0.05, 0.5, 0.05, -0.05, -0.5, -0.05, -0.05, -0.5)
+
+[sub_resource type="Animation" id="Animation_e6xts"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spikes:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_m6msn"]
+resource_name = "catch"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spikes:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.1, 0), Vector3(0, 0.2, 0), Vector3(0, 0.1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.125),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"catch"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e6xts"]
+_data = {
+&"RESET": SubResource("Animation_e6xts"),
+&"catch": SubResource("Animation_m6msn")
+}
+
+[node name="SpikeTrap1" type="StaticBody3D"]
+script = ExtResource("1_e6xts")
+damage = 10.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_txt2i")
+max_db = -5.0
+
+[node name="DamageArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+collision_layer = 0
+collision_mask = 12
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
+shape = SubResource("BoxShape3D_e6xts")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+size = Vector3(1, 0.1, 1)
+material = SubResource("StandardMaterial3D_ru0b7")
+
+[node name="Spikes" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+material_override = SubResource("StandardMaterial3D_txt2i")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Spikes"]
+radius = 0.1
+height = 0.2
+sides = 12
+cone = true
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.3)
+radius = 0.1
+height = 0.2
+sides = 12
+cone = true
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3)
+radius = 0.1
+height = 0.2
+sides = 12
+cone = true
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0)
+radius = 0.1
+height = 0.2
+sides = 12
+cone = true
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, -0.3)
+radius = 0.1
+height = 0.2
+sides = 12
+cone = true
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0.3)
+radius = 0.1
+height = 0.2
+sides = 12
+cone = true
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 0)
+radius = 0.1
+height = 0.2
+sides = 12
+cone = true
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, -0.3)
+radius = 0.1
+height = 0.2
+sides = 12
+cone = true
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 0.3)
+radius = 0.1
+height = 0.2
+sides = 12
+cone = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+shape = SubResource("BoxShape3D_m6msn")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 0.05, 0)
+shape = SubResource("ConcavePolygonShape3D_m6msn")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.55, 0.05, 0)
+shape = SubResource("ConcavePolygonShape3D_m6msn")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.40413e-08, 0.05, 0.55)
+shape = SubResource("ConcavePolygonShape3D_m6msn")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.40413e-08, 0.05, -0.55)
+shape = SubResource("ConcavePolygonShape3D_m6msn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_e6xts")
+}
+
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]

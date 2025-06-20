@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Trap" load_steps=4 format=3 uid="uid://2ahmub8oss6r"]
+
+[ext_resource type="Script" uid="uid://dihp3x412umxa" path="res://Scripts/Data/trap_data.gd" id="1_db86v"]
+[ext_resource type="Texture2D" uid="uid://bjltaj475mgf2" path="res://Textures/UI/Traps/spiketrap2.png" id="2_fnd5j"]
+[ext_resource type="PackedScene" uid="uid://bhspdtf86j2pv" path="res://Objects/Traps/SpikeTrap3.tscn" id="3_3k3ae"]
+
+[resource]
+script = ExtResource("1_db86v")
+name_tag = "SPKTRP2_NAME"
+description_tag = "SPKTRP2_DESC"
+thumnbail = ExtResource("2_fnd5j")
+trap_scene = ExtResource("3_3k3ae")
+trap_id = "spiketrap2"
+craft_requirements = Array[String](["planks", "planks", "iron", "iron"])
+metadata/_custom_type_script = "uid://dihp3x412umxa"

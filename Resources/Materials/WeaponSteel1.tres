@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bwhlo3ls78k20"]
+
+[ext_resource type="Texture2D" uid="uid://bo7e30apib18g" path="res://Textures/Objects/Metal/metal_ao.png" id="1_bhlln"]
+
+[resource]
+resource_name = "Material.007"
+cull_mode = 2
+albedo_color = Color(0.404511, 0.404511, 0.404511, 1)
+albedo_texture = ExtResource("1_bhlln")

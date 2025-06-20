@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://casqoyl6qft2f"]
+
+[ext_resource type="Script" uid="uid://d2rvqvgqk3jqv" path="res://Scripts/game_manager.gd" id="1_81vtd"]
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_81vtd")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="NotificationPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="WaveTimer" type="Timer" parent="."]
+one_shot = true

@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c4735h3nxav2d"]
+
+[ext_resource type="Texture2D" uid="uid://ptxm07ypesrs" path="res://Textures/Objects/Grass/grass_al.png" id="1_3cpy0"]
+
+[resource]
+specular_mode = 1
+albedo_color = Color(0.347817, 0.347817, 0.347817, 1)
+albedo_texture = ExtResource("1_3cpy0")
+uv1_triplanar = true

@@ -1,0 +1,124 @@
+[gd_scene load_steps=10 format=3 uid="uid://diyvkxldc0oaa"]
+
+[ext_resource type="Script" uid="uid://deq5j254r0gfg" path="res://Scripts/Interactables/switch.gd" id="1_vn24r"]
+[ext_resource type="AudioStream" uid="uid://chg4b257h5y8v" path="res://Sounds/Interactables/switch1.wav" id="2_togky"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_abqwq"]
+lightmap_size_hint = Vector2i(5, 9)
+add_uv2 = true
+size = Vector3(0.15, 0.3, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vn24r"]
+lightmap_size_hint = Vector2i(5, 8)
+add_uv2 = true
+size = Vector3(0.1, 0.17, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_abqwq"]
+size = Vector3(0.15, 0.3, 0.1)
+
+[sub_resource type="Animation" id="Animation_vn24r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.261799, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_togky"]
+resource_name = "disable_switch"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.261799, 0, 0), Vector3(0.261799, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_abqwq"]
+resource_name = "enable_switch"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.261799, 0, 0), Vector3(-0.261799, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vn24r"]
+_data = {
+&"RESET": SubResource("Animation_vn24r"),
+&"disable_switch": SubResource("Animation_togky"),
+&"enable_switch": SubResource("Animation_abqwq")
+}
+
+[node name="Switch" type="StaticBody3D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_vn24r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_abqwq")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0.025)
+mesh = SubResource("BoxMesh_vn24r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_abqwq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vn24r")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_togky")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

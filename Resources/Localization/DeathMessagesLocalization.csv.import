@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bv4w6264d8ccl"
+
+[deps]
+
+files=["res://Resources/Localization/DeathMessagesLocalization.en.translation", "res://Resources/Localization/DeathMessagesLocalization.ru.translation"]
+
+source_file="res://Resources/Localization/DeathMessagesLocalization.csv"
+dest_files=["res://Resources/Localization/DeathMessagesLocalization.en.translation", "res://Resources/Localization/DeathMessagesLocalization.ru.translation"]
+
+[params]
+
+compress=true
+delimiter=0

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ha2wwmk0gsxd"]
+
+[ext_resource type="PackedScene" uid="uid://dlajgwl4vtf0m" path="res://Scenes/Menu.tscn" id="1_ko2s7"]
+
+[node name="Test" type="Node"]
+
+[node name="Menu" parent="." instance=ExtResource("1_ko2s7")]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://by3hj4vxnlai7")

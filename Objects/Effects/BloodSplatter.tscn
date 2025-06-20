@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://bf80p6kx4pu3j"]
+
+[ext_resource type="Texture2D" uid="uid://bqfuj2di5llgj" path="res://Textures/Effects/bloodsplatter_1.png" id="1_y2fqf"]
+[ext_resource type="Script" uid="uid://brimdt5jxfhr5" path="res://Scripts/Effects/blood_splatter.gd" id="2_3aj3a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3aj3a"]
+transparency = 1
+albedo_texture = ExtResource("1_y2fqf")
+billboard_mode = 1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8ltnp"]
+spread = 180.0
+initial_velocity_min = 3.0
+initial_velocity_max = 3.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_y2fqf"]
+size = Vector2(0.35, 0.35)
+
+[node name="BloodSplatter" type="GPUParticles3D"]
+material_override = SubResource("StandardMaterial3D_3aj3a")
+emitting = false
+amount = 32
+lifetime = 0.1
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_8ltnp")
+draw_pass_1 = SubResource("QuadMesh_y2fqf")
+script = ExtResource("2_3aj3a")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

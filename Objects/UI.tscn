@@ -1,0 +1,392 @@
+[gd_scene load_steps=22 format=3 uid="uid://dvlwg60i03ltu"]
+
+[ext_resource type="Script" uid="uid://cvtl56jy5wyfp" path="res://Scripts/ui.gd" id="1_cyweb"]
+[ext_resource type="Script" uid="uid://cifq6de46ei3x" path="res://Scripts/Nodes/trap_menu.gd" id="2_r3uuq"]
+[ext_resource type="Texture2D" uid="uid://03mn2qlyxqw4" path="res://Textures/UI/Overlays/blood_overlay_left_top.png" id="2_w2x5g"]
+[ext_resource type="FontFile" uid="uid://bfx857xbe5wbf" path="res://Resources/Fonts/Ebbe.ttf" id="3_ct24o"]
+[ext_resource type="Texture2D" uid="uid://dnhutkfb1lr7r" path="res://Textures/UI/Traps/spiketrap1.png" id="3_cyweb"]
+[ext_resource type="Texture2D" uid="uid://dwxf3n6slf4os" path="res://Textures/UI/interaction.png" id="3_ht4vi"]
+[ext_resource type="Texture2D" uid="uid://eellots4c0m0" path="res://Textures/UI/Overlays/blood_overlay_right_top.png" id="3_x5ll3"]
+[ext_resource type="Texture2D" uid="uid://cigsougg83jov" path="res://Textures/UI/Overlays/blood_overlay_left_bottom.png" id="4_o6nm7"]
+[ext_resource type="Texture2D" uid="uid://1emvysd2ve11" path="res://Textures/UI/swaparrowup.png" id="4_pkanx"]
+[ext_resource type="Texture2D" uid="uid://bu0fkv2trn760" path="res://Textures/UI/swaparrowdown.png" id="5_ht4vi"]
+[ext_resource type="Texture2D" uid="uid://dr0cjv32msw5d" path="res://Textures/UI/Overlays/blood_overlay_right_bottom.png" id="5_ynfbr"]
+[ext_resource type="Shader" uid="uid://fyxvg78pqdqt" path="res://Resources/Shaders/HealthBar.gdshader" id="7_xjmjv"]
+[ext_resource type="FontFile" uid="uid://1bmcp2r7baky" path="res://Resources/Fonts/Daneehand.ttf" id="8_facvm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ct24o"]
+shader = ExtResource("7_xjmjv")
+shader_parameter/light_effect = false
+shader_parameter/border_exclusion_effect = false
+shader_parameter/wave_fix_on_border = false
+shader_parameter/water_color = Color(0.529412, 0, 0, 1)
+shader_parameter/water_wave_speed = 0.999998
+shader_parameter/water_wave_ci = 0.05
+shader_parameter/water_back_lightness = 0.8
+shader_parameter/ball_color = Color(0, 0, 0, 1)
+shader_parameter/ball_border_ci = 5.0
+shader_parameter/ball_light_speed = 2.0
+shader_parameter/wave_num = 2.0
+shader_parameter/ini_Time = 0.0
+shader_parameter/height = 1.0
+shader_parameter/vibration_effect = false
+shader_parameter/vibration_effect_timelength = 4.0
+shader_parameter/vibration_speed = 4.0
+shader_parameter/vibration_magnitude = 0.25
+shader_parameter/vibration_wave_ci = 0.05
+shader_parameter/refraction_ratio_glass = 0.2
+shader_parameter/refraction_ratio_water = 0.6
+
+[sub_resource type="LabelSettings" id="LabelSettings_xjmjv"]
+font = ExtResource("3_ct24o")
+font_size = 45
+font_color = Color(0, 0, 0, 1)
+outline_size = 5
+
+[sub_resource type="Animation" id="Animation_nogks"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blood1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Blood2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Blood3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Blood4:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ynfbr"]
+resource_name = "blood1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blood1:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2jyvr"]
+resource_name = "blood2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blood2:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_y4dow"]
+resource_name = "blood3"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blood3:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_433n8"]
+resource_name = "blood4"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blood4:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nogks"]
+_data = {
+&"RESET": SubResource("Animation_nogks"),
+&"blood1": SubResource("Animation_ynfbr"),
+&"blood2": SubResource("Animation_2jyvr"),
+&"blood3": SubResource("Animation_y4dow"),
+&"blood4": SubResource("Animation_433n8")
+}
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_cyweb")
+
+[node name="StatsControl" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HealthBar" type="ColorRect" parent="StatsControl"]
+material = SubResource("ShaderMaterial_ct24o")
+layout_mode = 0
+offset_left = 35.0
+offset_top = 35.0
+offset_right = 210.0
+offset_bottom = 210.0
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="StatsControl/HealthBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "100.0"
+label_settings = SubResource("LabelSettings_xjmjv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DamageOverlay" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Blood1" type="TextureRect" parent="DamageOverlay"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_w2x5g")
+
+[node name="Blood2" type="TextureRect" parent="DamageOverlay"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_x5ll3")
+
+[node name="Blood3" type="TextureRect" parent="DamageOverlay"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_o6nm7")
+
+[node name="Blood4" type="TextureRect" parent="DamageOverlay"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_ynfbr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DamageOverlay"]
+libraries = {
+&"": SubResource("AnimationLibrary_nogks")
+}
+
+[node name="TrapMenu" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -350.0
+offset_right = 1920.0
+grow_vertical = 0
+script = ExtResource("2_r3uuq")
+
+[node name="MarginContainer" type="MarginContainer" parent="TrapMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Panel" type="Panel" parent="TrapMenu/MarginContainer"]
+layout_mode = 2
+
+[node name="UpArrow" type="TextureButton" parent="TrapMenu/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 90.0
+offset_top = -80.0
+offset_right = 140.0
+offset_bottom = -60.0
+grow_vertical = 2
+texture_normal = ExtResource("4_pkanx")
+
+[node name="TrapTexture" type="TextureRect" parent="TrapMenu/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = -60.0
+offset_right = 190.0
+offset_bottom = 60.0
+grow_vertical = 2
+texture = ExtResource("3_cyweb")
+
+[node name="DownArrow" type="TextureButton" parent="TrapMenu/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 90.0
+offset_top = 60.0
+offset_right = 140.0
+offset_bottom = 80.0
+grow_vertical = 2
+texture_normal = ExtResource("5_ht4vi")
+
+[node name="NameLabel" type="Label" parent="TrapMenu/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -125.0
+offset_right = 175.0
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_ct24o")
+theme_override_font_sizes/font_size = 35
+text = "BLANK TEXT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DescriptionLabel" type="Label" parent="TrapMenu/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -275.0
+offset_top = -62.5
+offset_right = 275.0
+offset_bottom = 62.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_facvm")
+theme_override_font_sizes/font_size = 25
+text = "BLANK TEXT"
+horizontal_alignment = 1
+
+[node name="InventioryGrid" type="GridContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = -384.0
+offset_right = 384.0
+offset_bottom = 384.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 6
+
+[node name="InteractionIcon" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -75.0
+offset_right = 75.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_ht4vi")

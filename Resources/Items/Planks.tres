@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://dv5nbqgv6j88t"]
+
+[ext_resource type="Script" uid="uid://burv2cpscxnkr" path="res://Scripts/Data/item_data.gd" id="1_m7eor"]
+[ext_resource type="BoxMesh" uid="uid://dflmehxm24fnx" path="res://Resources/Meshes/PickablePlanks.tres" id="1_tfrp5"]
+[ext_resource type="Texture2D" uid="uid://chx3s7wqcplca" path="res://Textures/UI/Items/planks_icon.png" id="2_hapgu"]
+
+[resource]
+script = ExtResource("1_m7eor")
+name_code = "PLANKSNAME"
+id = "planks"
+texture = ExtResource("2_hapgu")
+type = 0
+description_code = "PLANKSDESC"
+model = ExtResource("1_tfrp5")
+metadata/_custom_type_script = "uid://burv2cpscxnkr"
