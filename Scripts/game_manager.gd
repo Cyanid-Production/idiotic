@@ -55,9 +55,6 @@ func get_object(key_to:String):
 func get_item(key_to:String):
 	return player_items.get(key_to)
 
-func get_player(player_id:String):
-	return get_tree().get_current_scene().get_node("Map").get_node(player_id)
-
 @rpc("any_peer", "call_local")
 func start_game():
 	on_game_started.emit()
