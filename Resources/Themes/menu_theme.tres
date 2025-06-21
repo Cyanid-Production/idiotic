@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cmbofmpyce526"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cmbofmpyce526"]
 
 [ext_resource type="FontFile" uid="uid://1bmcp2r7baky" path="res://Resources/Fonts/Daneehand.ttf" id="1_gkt80"]
+[ext_resource type="FontFile" uid="uid://bfx857xbe5wbf" path="res://Resources/Fonts/Ebbe.ttf" id="2_dnr12"]
 
 [resource]
 Button/font_sizes/font_size = 30
@@ -9,3 +10,5 @@ MarginContainer/constants/margin_bottom = 35
 MarginContainer/constants/margin_left = 35
 MarginContainer/constants/margin_right = 35
 MarginContainer/constants/margin_top = 35
+TabContainer/font_sizes/font_size = 24
+TabContainer/fonts/font = ExtResource("2_dnr12")

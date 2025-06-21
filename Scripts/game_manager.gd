@@ -10,6 +10,8 @@ var players_array : Array
 var enemies_array : Array
 var on_host : bool
 
+var current_profession : Profession
+
 var current_wave : int = 0
 var wave_enemy_amount = 2
 var wave_countdown : int = 30
@@ -52,6 +54,9 @@ func _ready():
 func get_object(key_to:String):
 	return preloaded_objects.get(key_to).instantiate()
 
+func get_player(player_id):
+	return get_tree().get_current_scene().get_node("Map/"+player_id)
+
 func get_item(key_to:String):
 	return player_items.get(key_to)
 
@@ -61,7 +66,7 @@ func start_game():
 	new_target()
 	get_parent().get_node("Test/Map/EnemySpawner/Timer").start()
 	notificate(load("res://Sounds/debug1.wav"))
-	set_soundtrack(load("res://Music/light-slaughter.ogg"),-5.0)
+	set_soundtrack(load("res://Music/light-slaughter.ogg"), 5.0)
 
 func game_reset():
 	players_amount = 0

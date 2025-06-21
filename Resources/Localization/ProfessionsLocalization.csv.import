@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bd71qpooc5v8"
+
+[deps]
+
+files=["res://Resources/Localization/ProfessionsLocalization.en.translation", "res://Resources/Localization/ProfessionsLocalization.ru.translation"]
+
+source_file="res://Resources/Localization/ProfessionsLocalization.csv"
+dest_files=["res://Resources/Localization/ProfessionsLocalization.en.translation", "res://Resources/Localization/ProfessionsLocalization.ru.translation"]
+
+[params]
+
+compress=true
+delimiter=0

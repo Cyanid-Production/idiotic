@@ -108,7 +108,7 @@ LMB={
 locale/translation_remaps={
 "res://Sounds/Voicelines/English/HangmanWhy.wav": PackedStringArray("res://Sounds/Voicelines/Russian/HangmanWhy.wav:ru")
 }
-locale/translations=PackedStringArray("res://Resources/Localization/ItemsLocalization.en.translation", "res://Resources/Localization/ItemsLocalization.ru.translation", "res://Resources/Localization/TrapsLocalization.en.translation", "res://Resources/Localization/TrapsLocalization.ru.translation", "res://Resources/Localization/DeathMessagesLocalization.en.translation", "res://Resources/Localization/DeathMessagesLocalization.ru.translation")
+locale/translations=PackedStringArray("res://Resources/Localization/ItemsLocalization.en.translation", "res://Resources/Localization/ItemsLocalization.ru.translation", "res://Resources/Localization/TrapsLocalization.en.translation", "res://Resources/Localization/TrapsLocalization.ru.translation", "res://Resources/Localization/DeathMessagesLocalization.en.translation", "res://Resources/Localization/DeathMessagesLocalization.ru.translation", "res://Resources/Localization/ProfessionsLocalization.en.translation", "res://Resources/Localization/ProfessionsLocalization.ru.translation", "res://Resources/Localization/UILocalization.en.translation", "res://Resources/Localization/UILocalization.ru.translation")
 locale/locale_filter_mode=0
 
 [layer_names]

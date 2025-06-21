@@ -8,10 +8,8 @@ var jump_velocity = 4.5
 var is_host : bool = false
 
 var holding : bool = false
-var current_weapon : String = "hunterrifle"
-var inventory_items : Array = [
-	"cloth"
-]
+var current_weapon = null
+var inventory_items : Array = []
 var craft_allow : bool = false
 var craft_points : int = 0
 var craft_array
@@ -38,8 +36,13 @@ func _ready():
 	
 	GameManager.players_array.append(self)
 	
+	inventory_items = GameManager.current_profession.start_items
+	current_weapon = GameManager.current_profession.start_weapon
+	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	camera.get_node("Camera3D").current = true
+	ui.refresh_inventory()
+	ui.show()
 	
 	GameManager.current_player = self
 
@@ -91,7 +94,7 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("interact"):
 		if interaction_cast.get_collider() != null and interaction_cast.get_collider().has_method("use"):
-			interaction_cast.get_collider().use.rpc(self)
+			interaction_cast.get_collider().use.rpc(name)
 			hand_anim.rpc("interact_1")
 	
 	if interaction_cast.get_collider() != null:
@@ -114,16 +117,17 @@ func _physics_process(delta):
 
 @rpc("any_peer", "call_local")
 func equip_weapon():
-	if not holding:
-		holding = true
-		hand_anim("rifle_1")
-		var weapon = GameManager.get_object(current_weapon)
-		weapon.position = weapon.positioning
-		attachment_node.add_child(weapon)
-	else:
-		holding = false
-		hand_anim("rifle_1", true)
-		attachment_node.get_node("Weapon").queue_free()
+	if current_weapon != null and current_weapon != "":
+		if not holding:
+			holding = true
+			hand_anim("rifle_1")
+			var weapon = GameManager.get_object(current_weapon)
+			weapon.position = weapon.positioning
+			attachment_node.add_child(weapon)
+		else:
+			holding = false
+			hand_anim("rifle_1", true)
+			attachment_node.get_node("Weapon").queue_free()
 
 func add_to_inventory(item_id : String):
 	inventory_items.append(item_id)

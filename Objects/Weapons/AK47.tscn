@@ -494,7 +494,7 @@ _data = {
 
 [node name="Weapon" type="Node3D"]
 script = ExtResource("1_jt4og")
-damage = 5.0
+damage = 10.0
 automatic = true
 positioning = Vector3(0.115, 1.4, -0.75)
 

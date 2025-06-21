@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Profession" load_steps=2 format=3 uid="uid://qavss0bh2k6r"]
+
+[ext_resource type="Script" uid="uid://g50cpd44gig0" path="res://Scripts/Data/profession_data.gd" id="1_occq0"]
+
+[resource]
+script = ExtResource("1_occq0")
+namecode = "BLACKSMITH_NAME"
+description_code = "BLACKSMITH_DESC"
+id = "blck"
+start_items = Array[String](["iron", "iron", "iron"])
+start_weapon = ""
+visualcode = ""
+metadata/_custom_type_script = "uid://g50cpd44gig0"

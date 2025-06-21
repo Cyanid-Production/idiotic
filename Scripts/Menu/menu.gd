@@ -9,13 +9,22 @@ var enet_peer = ENetMultiplayerPeer.new()
 func disable():
 	hide()
 	$SubViewportContainer/SubViewport/Objects.hide()
+	$Control/TabContainer/ProfessionMenu/SubViewportContainer/SubViewport/Objects.hide()
 
 func enable():
 	show()
 	$SubViewportContainer/SubViewport/Objects.show()
+	$Control/TabContainer/ProfessionMenu/SubViewportContainer/SubViewport/Objects.show()
 
+func ready_check():
+	if GameManager.current_profession != null:
+		return true
+	else:
+		return false
 
 func _on_host_button_pressed():
+	if not ready_check(): return
+	
 	disable()
 	
 	enet_peer.create_server(PORT)
@@ -25,19 +34,26 @@ func _on_host_button_pressed():
 	add_player(multiplayer.get_unique_id())
 
 func _on_join_button_pressed():
-	disable()
+	if not ready_check(): return
 	
 	enet_peer.create_client(adress_enter.text, PORT)
 	multiplayer.multiplayer_peer = enet_peer
 	
 	add_player(multiplayer.get_unique_id(), false)
 
+func _on_character_button_pressed():
+	$Sounds/CustomizeSound.play()
+	$Control/TabContainer.visible = !$Control/TabContainer.visible
+
+func _on_settings_button_pressed():
+	$Sounds/CustomizeSound.play()
+	$Control/SettingsContainer.visible = !$Control/SettingsContainer.visible
+
 func _on_quit_button_pressed():
 	get_tree().quit()
 
 func add_player(peer_id : int, is_host : bool = true):
-	get_tree().get_current_scene().add_child(preload("res://Scenes/Map1.tscn").instantiate(), true)
-	$"../MultiplayerSpawner".spawn_path = "../Map"
+	get_tree().get_current_scene().get_node("Map").show()
 	var new_player = GameManager.get_object("player")
 	new_player.name = str(peer_id)
 	new_player.global_position = Vector3(0,1,0)

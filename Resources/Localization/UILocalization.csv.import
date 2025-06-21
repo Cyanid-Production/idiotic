@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dleveo24ilnfn"
+
+[deps]
+
+files=["res://Resources/Localization/UILocalization.en.translation", "res://Resources/Localization/UILocalization.ru.translation"]
+
+source_file="res://Resources/Localization/UILocalization.csv"
+dest_files=["res://Resources/Localization/UILocalization.en.translation", "res://Resources/Localization/UILocalization.ru.translation"]
+
+[params]
+
+compress=true
+delimiter=0

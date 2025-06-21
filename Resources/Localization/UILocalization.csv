@@ -1,0 +1,19 @@
+keys,en,ru
+HOST,Host,Создать игру
+JOIN,Join,Присоединиться
+QUIT,Quit,Выйти
+SETTINGS,Settings,Настройки
+ProfessionMenu,Professions,Профессии
+GameSettings,Game settings,Настройки сложности
+General,General,Общее
+Graphics,Graphics,Графика
+Sound,Sound,Звук
+LANGUAGE,Language:,Язык:
+VSYNC,VSync:,Вертикальная синхронизация:
+ENGLISH,English,Английский
+RUSSIAN,Russian,Русский
+ENABLED,Enabled,Включено
+DISABLED,Disabled,Выключено
+ADAPTIVE,Adaptive,Адаптивный
+MAILBOX,Mailbox,"""Мэйлбокс"""
+CHARACTER,Customize character,Выбрать персонажа

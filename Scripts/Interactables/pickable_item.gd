@@ -11,5 +11,5 @@ func _ready():
 
 @rpc("any_peer", "call_local")
 func use(usr):
-	usr.add_to_inventory(item_to_pick.id)
+	GameManager.get_player(usr).add_to_inventory(item_to_pick.id)
 	queue_free()

@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cev6a8crb3b6j"]
+
+[ext_resource type="FontFile" uid="uid://bfx857xbe5wbf" path="res://Resources/Fonts/Ebbe.ttf" id="1_biorc"]
+
+[resource]
+default_font = ExtResource("1_biorc")
+default_font_size = 20

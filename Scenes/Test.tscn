@@ -1,10 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://ha2wwmk0gsxd"]
+[gd_scene load_steps=3 format=3 uid="uid://ha2wwmk0gsxd"]
 
 [ext_resource type="PackedScene" uid="uid://dlajgwl4vtf0m" path="res://Scenes/Menu.tscn" id="1_ko2s7"]
+[ext_resource type="PackedScene" uid="uid://dt1edm4db7bch" path="res://Scenes/Map1.tscn" id="2_gxb1y"]
 
 [node name="Test" type="Node"]
 
 [node name="Menu" parent="." instance=ExtResource("1_ko2s7")]
 
+[node name="Map" parent="." instance=ExtResource("2_gxb1y")]
+visible = false
+
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://by3hj4vxnlai7")
+spawn_path = NodePath("../Map")
