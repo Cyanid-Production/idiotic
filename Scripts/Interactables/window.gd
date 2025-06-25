@@ -7,6 +7,7 @@ var locked : bool = false
 @export var planks : Array[StaticBody3D]
 
 
+@rpc("any_peer", "call_local")
 func change_health(hlt:float):
 	health += hlt
 	if health <= 0.0:
@@ -32,9 +33,9 @@ func change_health(hlt:float):
 
 @rpc("any_peer", "call_local")
 func use(usr):
-	if usr.inventory_items.has(GameManager.get_item("planks")) and health <= 80.0:
-		usr.remove_from_inventory("planks")
-		change_health(20.0)
+	if GameManager.get_player(usr).inventory_items.has("planks") and health <= 80.0:
+		GameManager.get_player(usr).remove_from_inventory("planks")
+		change_health.rpc(20.0)
 
 func take_damage(dmg:float):
-	change_health(-dmg/10.0)
+	change_health.rpc(-dmg/10.0)

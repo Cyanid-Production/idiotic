@@ -2,12 +2,13 @@ extends Node
 
 
 var language : String = "en"
+
 var vsync = DisplayServer.VSYNC_ENABLED
+var grass_enabled = true
 
 
 func _ready():
 	load_data()
-	
 	var language_item_id = 0
 	match language:
 		"en":
@@ -15,7 +16,6 @@ func _ready():
 		"ru":
 			language_item_id = 1
 	$General/MarginContainer/VBoxContainer/Language/LanguageOption.select(language_item_id)
-	
 	var vsync_item_id = 0
 	match language:
 		DisplayServer.VSYNC_ENABLED:
@@ -27,11 +27,13 @@ func _ready():
 		DisplayServer.VSYNC_MAILBOX:
 			vsync_item_id = 3
 	$Graphics/MarginContainer/VBoxContainer/Vsync/VsyncOption.select(vsync_item_id)
+	$Graphics/MarginContainer/VBoxContainer/Grass/GrassCheck.button_pressed = grass_enabled
 
 func save():
 	var save_dictionary = {
 		"language" : language,
-		"vsync" : vsync
+		"vsync" : vsync,
+		"grass" : grass_enabled
 	}
 	return save_dictionary
 
@@ -48,6 +50,8 @@ func load_data():
 		TranslationServer.set_locale(language)
 		vsync = DisplayServer.VSYNC_ENABLED
 		DisplayServer.window_set_vsync_mode(vsync)
+		grass_enabled = true
+		GameManager.grass_display = grass_enabled
 		return
 	
 	var save_game = FileAccess.open("user://settings.save", FileAccess.READ)
@@ -63,6 +67,7 @@ func load_data():
 		
 		language = node_data["language"]
 		vsync = node_data["vsync"]
+		grass_enabled = node_data["grass"]
 
 func  _on_language_option_item_selected(index):
 	var item_id = $General/MarginContainer/VBoxContainer/Language/LanguageOption.get_item_id(index)
@@ -88,6 +93,10 @@ func _on_vsync_option_item_selected(index):
 	DisplayServer.window_set_vsync_mode(vsync)
 	save_data()
 
+func _on_grass_check_toggled(toggled_on):
+	grass_enabled = toggled_on
+	GameManager.grass_display = toggled_on
+	save_data()
 
 func _on_tab_selected(tab):
 	$"../../Sounds/CustomizeSound".play()

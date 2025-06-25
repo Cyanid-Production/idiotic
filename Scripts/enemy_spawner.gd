@@ -14,7 +14,7 @@ func spawn_enemy():
 	wave_passed += 1
 	spawn_timer.wait_time += 5.0
 	alert_player.play()
-	for i in 5:
+	for i in (3+(wave_passed*2)):
 		var current_point = spawns_array.pick_random()
 		var spawnpos = current_point.global_position
 		var new_enemy = GameManager.get_object("zombie")

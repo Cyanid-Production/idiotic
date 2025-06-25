@@ -16,6 +16,8 @@ var current_wave : int = 0
 var wave_enemy_amount = 2
 var wave_countdown : int = 30
 
+var grass_display : bool = true
+
 @onready var wave_timer : Timer = $WaveTimer
 
 var preloaded_objects = {
@@ -106,3 +108,7 @@ func new_target():
 		if players_array.is_empty():
 			return
 		i.find_target(false)
+
+func redraw_map():
+	if grass_display:
+		get_parent().get_node("Test/Map/House/Grass").hide()

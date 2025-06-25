@@ -36,6 +36,8 @@ func _on_host_button_pressed():
 func _on_join_button_pressed():
 	if not ready_check(): return
 	
+	disable()
+	
 	enet_peer.create_client(adress_enter.text, PORT)
 	multiplayer.multiplayer_peer = enet_peer
 	
@@ -59,4 +61,6 @@ func add_player(peer_id : int, is_host : bool = true):
 	new_player.global_position = Vector3(0,1,0)
 	get_tree().get_current_scene().get_node("Map").add_child(new_player, true)
 	GameManager.on_host = is_host
+	if is_multiplayer_authority():
+		GameManager.redraw_map()
 	await get_tree().physics_frame

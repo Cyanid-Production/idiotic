@@ -10,6 +10,7 @@ func _ready():
 
 func _on_pressed():
 	GameManager.current_profession = profession
+	get_tree().get_current_scene().get_node("Menu/Sounds/CharacterSound").play()
 
 func _on_hover():
 	get_parent().get_parent().get_node("DescLabel").text = tr(profession.description_code)

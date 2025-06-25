@@ -60,7 +60,7 @@ func _unhandled_input(event):
 		look_marker.global_position.y += (-event.relative.y * 0.01)
 	
 	if event.is_action_pressed("go_first"):
-		equip_weapon.rpc()
+		equip_weapon.rpc(current_weapon)
 	
 	if event.is_action_pressed("go_second"):
 		GameManager.start_game.rpc()
@@ -116,12 +116,12 @@ func _physics_process(delta):
 	move_and_slide()
 
 @rpc("any_peer", "call_local")
-func equip_weapon():
-	if current_weapon != null and current_weapon != "":
+func equip_weapon(wpn):
+	if wpn != null and wpn != "":
 		if not holding:
 			holding = true
 			hand_anim("rifle_1")
-			var weapon = GameManager.get_object(current_weapon)
+			var weapon = GameManager.get_object(wpn)
 			weapon.position = weapon.positioning
 			attachment_node.add_child(weapon)
 		else:
