@@ -93,7 +93,7 @@ func _physics_process(delta):
 		velocity.y = jump_velocity
 	
 	if Input.is_action_just_pressed("interact"):
-		if interaction_cast.get_collider() != null and interaction_cast.get_collider().has_method("use"):
+		if interaction_cast.get_collider() != null and interaction_cast.get_collider().has_method("use") and not holding:
 			interaction_cast.get_collider().use.rpc(name)
 			hand_anim.rpc("interact_1")
 	

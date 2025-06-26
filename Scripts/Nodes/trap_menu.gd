@@ -34,3 +34,7 @@ func set_current_trap(trp_id:int):
 	await get_tree().physics_frame
 	get_parent().root_player.current_trap = trp.trap_scene
 	get_parent().root_player.current_trap_id = trp.trap_id
+	var new_hint : String = ""
+	for i in GameManager.get_item(trp.trap_id).craft_requirements:
+		new_hint = str(new_hint,"\n",GameManager.get_item(i))
+	get_parent().set_hint(new_hint)

@@ -110,5 +110,7 @@ func new_target():
 		i.find_target(false)
 
 func redraw_map():
-	if grass_display:
+	if not grass_display:
 		get_parent().get_node("Test/Map/House/Grass").hide()
+	else:
+		get_parent().get_node("Test/Map/House/Grass").show()

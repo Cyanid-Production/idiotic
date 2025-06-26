@@ -45,6 +45,13 @@ func add_item(itm:Item):
 			empty_slot.add_child(new_item)
 			return
 
+func set_hint(txt:String):
+	$HintLabel.text = txt
+	$HintLabel.show()
+
+func hide_hint():
+	$HintLabel.hide()
+
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("inventory"):
 		if inventory.visible:

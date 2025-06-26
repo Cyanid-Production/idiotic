@@ -14,6 +14,7 @@ var attack_allow : bool = false
 
 func _ready():
 	GameManager.enemies_array.append(self)
+	random_setup.rpc()
 
 func _physics_process(delta):
 	if not target == GameManager.current_player:
@@ -53,6 +54,10 @@ func take_damage(dmg : float):
 	add_sibling(new_blood)
 	if health <= 0:
 		die.rpc()
+
+@rpc("any_peer", "call_local")
+func random_setup():
+	speed += randf_range(-0.5,0.5)
 
 @rpc("any_peer", "call_local")
 func die():
