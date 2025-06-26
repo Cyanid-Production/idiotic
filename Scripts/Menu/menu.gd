@@ -20,6 +20,8 @@ func ready_check():
 	if GameManager.current_profession != null:
 		return true
 	else:
+		$Sounds/CustomizeSound.play()
+		$Control/TabContainer.visible = !$Control/TabContainer.visible
 		return false
 
 func _on_host_button_pressed():

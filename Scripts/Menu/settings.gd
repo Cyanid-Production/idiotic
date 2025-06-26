@@ -39,9 +39,7 @@ func save():
 
 func save_data():
 	var save_game = FileAccess.open("user://settings.save", FileAccess.WRITE)
-	
 	var json_string = JSON.stringify(save())
-	
 	save_game.store_line(json_string)
 
 func load_data():

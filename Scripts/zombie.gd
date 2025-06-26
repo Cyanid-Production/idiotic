@@ -66,6 +66,7 @@ func die():
 	corpse.global_position = global_position
 	corpse.rot_coord = global_rotation
 	add_sibling(corpse)
+	GameManager.bestiary_objects.set("zombie",true)
 	queue_free()
 
 @rpc("any_peer", "call_local")

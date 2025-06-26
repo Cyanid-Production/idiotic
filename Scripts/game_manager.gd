@@ -49,8 +49,15 @@ var player_items : Dictionary = {
 	"spiketrap3" : preload("res://Resources/Traps/SpikeTrap3.tres")
 }
 
+var bestiary_objects : Dictionary = {
+	### CHARACTERS ###
+	"player" : true,
+	"zombie" : false,
+	"shooter" : false
+}
 
 func _ready():
+	load_data()
 	wave_timer.wait_time = wave_countdown
 
 func get_object(key_to:String):
@@ -114,3 +121,38 @@ func redraw_map():
 		get_parent().get_node("Test/Map/House/Grass").hide()
 	else:
 		get_parent().get_node("Test/Map/House/Grass").show()
+
+func save():
+	var save_dictionary = {
+		"player_examined" : bestiary_objects.get("player"),
+		"zombie_examined" : bestiary_objects.get("zombie"),
+		"shooter_examined" : bestiary_objects.get("shooter")
+	}
+	return save_dictionary
+
+func save_data():
+	var save_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	var json_string = JSON.stringify(save())
+	save_game.store_line(json_string)
+ 
+func load_data():
+	if not FileAccess.file_exists("user://savegame.save"):
+		bestiary_objects.set("player",false)
+		bestiary_objects.set("zombie",false)
+		bestiary_objects.set("shooter",false)
+		return
+	
+	var save_game = FileAccess.open("user://savegame.save", FileAccess.READ)
+	
+	while save_game.get_position() < save_game.get_length():
+		var json_string = save_game.get_line()
+		var json = JSON.new()
+		var parse_result = json.parse(json_string)
+		if not parse_result == OK:
+			GameManager.debuglog("Parse Error: "+json.get_error_message()+" in "+json_string+" at line "+json.get_error_line())
+			continue
+		var node_data = json.data
+		
+		bestiary_objects.set("player",node_data["player_examined"])
+		bestiary_objects.set("zombie",node_data["zombie_examined"])
+		bestiary_objects.set("shooter",node_data["shooter_examined"])

@@ -23,9 +23,9 @@ func _input(event):
 		GameManager.notificate(get_parent().click_scroll_sound)
 
 func _ready():
-	set_current_trap(0)
+	set_current_trap(0, false)
 
-func set_current_trap(trp_id:int):
+func set_current_trap(trp_id:int,hnt:bool=true):
 	current_trap_id = trp_id
 	var trp = traps_array[trp_id]
 	trap_thumbnail.texture = trp.thumnbail
@@ -34,7 +34,8 @@ func set_current_trap(trp_id:int):
 	await get_tree().physics_frame
 	get_parent().root_player.current_trap = trp.trap_scene
 	get_parent().root_player.current_trap_id = trp.trap_id
+	if not hnt: return
 	var new_hint : String = ""
 	for i in GameManager.get_item(trp.trap_id).craft_requirements:
-		new_hint = str(new_hint,"\n",GameManager.get_item(i))
+		new_hint = str(new_hint,"\n",tr(GameManager.get_item(i).name_code))
 	get_parent().set_hint(new_hint)

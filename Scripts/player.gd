@@ -107,11 +107,11 @@ func _physics_process(delta):
 	if direction:
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
-		$Body/Animators/LegsAnimator.play("walk_1")
+		leg_anim.rpc("walk_1")
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
-		$Body/Animators/LegsAnimator.stop()
+		leg_anim.rpc("walk_1", true)
 	
 	move_and_slide()
 
@@ -169,6 +169,13 @@ func hand_anim(anim_name : String, backwards : bool = false):
 	else:
 		$Body/Animators/HandsAnimator.play_backwards(anim_name)
 
+@rpc("any_peer", "call_local")
+func leg_anim(anim_name : String, stop : bool = false):
+	if not stop:
+		$Body/Animators/LegsAnimator.play(anim_name)
+	else:
+		$Body/Animators/LegsAnimator.stop()
+
 func take_damage(dmg : float):
 	health -= dmg
 	if health <= 0:
@@ -187,5 +194,6 @@ func die():
 	remove_from_group("Players")
 	GameManager.new_target()
 	if is_multiplayer_authority():
+		GameManager.save_data()
 		get_tree().change_scene_to_file("res://Objects/DeathScreen.tscn")
 	queue_free()
