@@ -16,6 +16,8 @@ func _ready():
 		var new_button = ProfessionButton.new()
 		new_button.text = tr(i.namecode)
 		new_button.profession = i
+		if i.namecode == "HUNTER_NAME" or i.namecode == "SOLDIER_NAME":
+			new_button.disabled = true
 		prof_container.add_child(new_button)
 
 

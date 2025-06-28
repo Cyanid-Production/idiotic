@@ -19,3 +19,6 @@ ADAPTIVE,Adaptive,Адаптивный
 MAILBOX,Mailbox,"""Мэйлбокс"""
 CHARACTER,Customize character,Выбрать персонажа
 GRASSDISP,Grass displaying:,Отображение травы:
+GRAINDISP,Grain filter:,"Фильтр ""зернистости"":"
+EXT1,Return to the menu,Вернуться в меню
+EXT2,Quit,Выйти из игры

@@ -19,6 +19,8 @@ var click_scroll_sound = preload("res://Sounds/Effects/click_scroll.wav")
 
 
 func _ready():
+	$GrainFilter.visible = GameManager.grain_display
+	
 	for i in inventory_size:
 		var slot := InventorySlot.new()
 		slot.add_to_grid(Item.Type.MATERIAL, Vector2(120,120))
@@ -65,3 +67,16 @@ func _physics_process(_delta):
 			trap_menu.hide()
 		elif not root_player.holding:
 			trap_menu.show()
+	if Input.is_action_just_pressed("ESC"):
+		if $ExitMenu.visible:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		$ExitMenu.visible = !$ExitMenu.visible
+
+func _on_menu_button_pressed():
+	get_tree().get_current_scene().get_node("Menu").enable()
+	get_tree().get_current_scene().get_node("Map").queue_free()
+
+func _on_quit_button_pressed():
+	get_tree().quit()

@@ -16,6 +16,7 @@ var current_wave : int = 0
 var wave_enemy_amount = 2
 var wave_countdown : int = 30
 
+var grain_display : bool = true
 var grass_display : bool = true
 
 @onready var wave_timer : Timer = $WaveTimer

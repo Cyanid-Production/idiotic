@@ -108,6 +108,11 @@ func _physics_process(delta):
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
 		leg_anim.rpc("walk_1")
+		
+		if velocity.y >= 0.0:
+			var stair_check = not $StairCheck/UpCheck.is_colliding() and $StairCheck/DownCheck.is_colliding()
+			$SeparationRay.disabled = !stair_check
+		
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
