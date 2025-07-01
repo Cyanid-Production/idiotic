@@ -5,7 +5,7 @@
 [ext_resource type="Animation" uid="uid://bp8tfajnbiwhs" path="res://Resources/Animations/Manican/hold_1.anim" id="2_t1tke"]
 [ext_resource type="PackedScene" uid="uid://dvlwg60i03ltu" path="res://Objects/UI.tscn" id="2_yk4ok"]
 [ext_resource type="Animation" uid="uid://co725w1hrsvma" path="res://Resources/Animations/Manican/interact_1.anim" id="3_qwxmt"]
-[ext_resource type="AudioStream" uid="uid://byxomengepdky" path="res://Sounds/Player/step1.wav" id="3_yk4ok"]
+[ext_resource type="AudioStream" uid="uid://dx5ie4j670x3r" path="res://Sounds/Player/step3.wav" id="6_t1tke"]
 
 [sub_resource type="Gradient" id="Gradient_t1tke"]
 offsets = PackedFloat32Array(0, 0.579545)
@@ -288,10 +288,10 @@ length = 0.55
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_t1tke"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
-properties/0/replication_mode = 1
+properties/0/replication_mode = 2
 properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
-properties/1/replication_mode = 1
+properties/1/replication_mode = 2
 properties/2/path = NodePath("Attachments/LookMarker:position")
 properties/2/spawn = true
 properties/2/replication_mode = 2
@@ -636,8 +636,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.80257, -3)
 [node name="Sounds" type="Node3D" parent="."]
 
 [node name="StepSound" type="AudioStreamPlayer3D" parent="Sounds"]
-stream = ExtResource("3_yk4ok")
-volume_db = -10.0
+stream = ExtResource("6_t1tke")
+volume_db = -15.0
+pitch_scale = 0.75
 
 [node name="StairCheck" type="Node3D" parent="."]
 

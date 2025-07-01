@@ -11,8 +11,10 @@ config_version=5
 [application]
 
 config/name="Idiotic"
-run/main_scene="uid://ha2wwmk0gsxd"
+run/main_scene="uid://c6vhhei8qwvic"
 config/features=PackedStringArray("4.4", "Forward Plus")
+boot_splash/bg_color=Color(1, 1, 1, 1)
+boot_splash/show_image=false
 boot_splash/image="uid://bkns5itj80vdj"
 config/icon="uid://iw0smwnrx5uu"
 

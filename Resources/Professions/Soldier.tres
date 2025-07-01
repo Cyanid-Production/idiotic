@@ -7,6 +7,7 @@ script = ExtResource("1_02xeo")
 namecode = "SOLDIER_NAME"
 description_code = "SOLDIER_DESC"
 id = "sold"
+altar_items = Array[String]([])
 start_items = Array[String]([])
 start_weapon = "ak47"
 metadata/_custom_type_script = "uid://g50cpd44gig0"

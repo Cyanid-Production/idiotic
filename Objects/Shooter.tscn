@@ -580,6 +580,7 @@ libraries = {
 
 [node name="AttackCast" type="RayCast3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11758e-21, 1, 7.54979e-08)
+visible = false
 target_position = Vector3(0, 0, 10)
 
 [node name="Sphere" type="Node3D" parent="."]
@@ -590,6 +591,9 @@ mesh = SubResource("SphereMesh_m1bho")
 
 [node name="InnerSphereMesh" type="MeshInstance3D" parent="Sphere"]
 mesh = SubResource("SphereMesh_jmx3o")
+
+[node name="Marker3D" type="Marker3D" parent="Sphere"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
 [node name="Sounds" type="Node3D" parent="."]
 

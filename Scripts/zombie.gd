@@ -31,7 +31,8 @@ func _physics_process(delta):
 	elif body_animator.current_animation != "attack_1" and transform.origin.distance_to(target.position) > 1.5:
 		nav_agent.target_position = target.global_position
 		look_at(Vector3(nav_agent.get_next_path_position().x,global_position.y,nav_agent.get_next_path_position().z))
-		body_anim.rpc("walk_1")
+		if not body_animator.is_playing():
+			body_anim.rpc("walk_1")
 	else:
 		direction = Vector3(0.0,0.0,0.0)
 	if target_cast.is_colliding() and not body_animator.current_animation == "attack_1":

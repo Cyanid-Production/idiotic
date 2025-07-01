@@ -6,6 +6,10 @@ extends CanvasLayer
 const PORT = 6969
 var enet_peer = ENetMultiplayerPeer.new()
 
+
+func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
 func disable():
 	hide()
 	$SubViewportContainer/SubViewport/Objects.hide()

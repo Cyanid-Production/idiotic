@@ -1,7 +1,6 @@
-[gd_scene load_steps=26 format=3 uid="uid://dvlwg60i03ltu"]
+[gd_scene load_steps=24 format=3 uid="uid://dvlwg60i03ltu"]
 
 [ext_resource type="Script" uid="uid://cvtl56jy5wyfp" path="res://Scripts/ui.gd" id="1_cyweb"]
-[ext_resource type="Shader" uid="uid://b2ksrym4djt0g" path="res://Resources/Shaders/Grain.gdshader" id="2_nogks"]
 [ext_resource type="Script" uid="uid://cifq6de46ei3x" path="res://Scripts/Nodes/trap_menu.gd" id="2_r3uuq"]
 [ext_resource type="Texture2D" uid="uid://03mn2qlyxqw4" path="res://Textures/UI/Overlays/blood_overlay_left_top.png" id="2_w2x5g"]
 [ext_resource type="FontFile" uid="uid://bfx857xbe5wbf" path="res://Resources/Fonts/Ebbe.ttf" id="3_ct24o"]
@@ -15,10 +14,6 @@
 [ext_resource type="Shader" uid="uid://fyxvg78pqdqt" path="res://Resources/Shaders/HealthBar.gdshader" id="7_xjmjv"]
 [ext_resource type="FontFile" uid="uid://1bmcp2r7baky" path="res://Resources/Fonts/Daneehand.ttf" id="8_facvm"]
 [ext_resource type="Theme" uid="uid://cmbofmpyce526" path="res://Resources/Themes/menu_theme.tres" id="15_2jyvr"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2jyvr"]
-shader = ExtResource("2_nogks")
-shader_parameter/noise_intensity = 0.05
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ct24o"]
 shader = ExtResource("7_xjmjv")
@@ -182,15 +177,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_cyweb")
-
-[node name="GrainFilter" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_2jyvr")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="StatsControl" type="Control" parent="."]
 layout_mode = 1
@@ -471,5 +457,6 @@ theme = ExtResource("15_2jyvr")
 theme_override_colors/font_color = Color(0.717647, 0, 0, 1)
 text = "EXT2"
 
+[connection signal="visibility_changed" from="TrapMenu" to="TrapMenu" method="_on_visibility_changed"]
 [connection signal="pressed" from="ExitMenu/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="ExitMenu/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

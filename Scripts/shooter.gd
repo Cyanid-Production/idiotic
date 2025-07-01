@@ -5,7 +5,7 @@ var health : float = 80.0
 var speed : float = 1.5
 
 @onready var nav_agent : NavigationAgent3D = $NavigationAgent3D
-@onready var target_cast : RayCast3D = $TargetCast
+@onready var target_cast : RayCast3D = $Body/AttackCast
 @onready var body_animator : AnimationPlayer = $Body/Animator
 
 var target
@@ -14,6 +14,7 @@ var attack_allow : bool = false
 
 func _ready():
 	GameManager.enemies_array.append(self)
+	#attack_line($Sphere/Marker3D.position)
 
 func _physics_process(delta):
 	if not target == GameManager.current_player:
@@ -45,6 +46,26 @@ func _physics_process(delta):
 	
 	velocity = velocity.lerp(direction*speed,5*delta)
 	move_and_slide()
+
+#func attack_line(aps:Vector3):
+	#var mesh_instance = MeshInstance3D.new()
+	#var immediate_mesh = ImmediateMesh.new()
+	#var material = ORMMaterial3D.new()
+	
+	#mesh_instance.mesh = immediate_mesh
+	
+	#mesh_instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	#material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	#material.albedo_color = Color.WHITE
+	
+	#immediate_mesh.surface_begin(Mesh.PRIMITIVE_LINES, material)
+	#immediate_mesh.surface_add_vertex(Vector3(0.0,0.0,0.0))
+	#immediate_mesh.surface_add_vertex(aps)
+	#immediate_mesh.surface_end()
+	
+	#mesh_instance.set_script(load("res://Scripts/Effects/line.gd"))
+	
+	#$Sphere.add_child(mesh_instance)
 
 func take_damage(dmg : float):
 	health -= dmg

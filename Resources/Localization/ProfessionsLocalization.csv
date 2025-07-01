@@ -1,9 +1,11 @@
 keys,en,ru
 BLACKSMITH_NAME,Blacksmith,Кузнец
-BLACKSMITH_DESC,Lots of iron in inventory.,Много железа в инвентаре.
+BLACKSMITH_DESC,Getting iron from the start and at the altar.,Получение железа со старта и на алтаре.
 HUNTER_NAME,Hunter,Охотник
 HUNTER_DESC,Rifle and bandages in inventory.,Винтовка и повязки в инвентаре.
 CARPENTER_NAME,Carpenter,Плотник
-CARPENTER_DESC,Lots of planks in inventory.,Много досок в инвентаре.
+CARPENTER_DESC,Getting planks from the start and at the altar.,Получение досок со старта и на алтаре.
 SOLDIER_NAME,Soldier,Солдат
 SOLDIER_DESC,Ak-47 in inventory.,Ak-47 в инвентаре.
+UNEMPLOYED_NAME,Unemployed,Безработный
+UNEMPLOYED_DESC,Needed for maximum immersion.,Нужен для максимального погружения.

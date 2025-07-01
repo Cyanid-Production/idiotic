@@ -14,7 +14,7 @@ func spawn_enemy():
 	wave_passed += 1
 	spawn_timer.wait_time += 5.0
 	alert_player.play()
-	for i in (3+(wave_passed*2)):
+	for i in (1+(wave_passed*2)):
 		var current_point = spawns_array.pick_random()
 		var spawnpos = current_point.global_position
 		var new_enemy = GameManager.get_object("zombie")
@@ -24,5 +24,5 @@ func spawn_enemy():
 	GameManager.new_target()
 
 func _on_timer_timeout():
-	if GameManager.players_array[0] == GameManager.current_player:
+	if GameManager.players_array[0] == GameManager.current_player and multiplayer.is_server():
 		spawn_enemy.rpc()

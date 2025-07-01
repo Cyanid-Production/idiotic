@@ -21,6 +21,14 @@ func _input(event):
 			current_trap_id += 1
 		set_current_trap(current_trap_id)
 		GameManager.notificate(get_parent().click_scroll_sound)
+	if event.is_action_pressed("zoom_out"):
+		if current_trap_id <= -(traps_array.size()-1):
+			current_trap_id = 0
+		else:
+			current_trap_id -= 1
+		set_current_trap(current_trap_id)
+		GameManager.notificate(get_parent().click_scroll_sound)
+
 
 func _ready():
 	set_current_trap(0, false)
@@ -39,3 +47,10 @@ func set_current_trap(trp_id:int,hnt:bool=true):
 	for i in GameManager.get_item(trp.trap_id).craft_requirements:
 		new_hint = str(new_hint,"\n",tr(GameManager.get_item(i).name_code))
 	get_parent().set_hint(new_hint)
+
+
+func _on_visibility_changed():
+	if visible:
+		set_current_trap(0)
+	else:
+		get_parent().hide_hint()

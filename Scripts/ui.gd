@@ -19,8 +19,6 @@ var click_scroll_sound = preload("res://Sounds/Effects/click_scroll.wav")
 
 
 func _ready():
-	$GrainFilter.visible = GameManager.grain_display
-	
 	for i in inventory_size:
 		var slot := InventorySlot.new()
 		slot.add_to_grid(Item.Type.MATERIAL, Vector2(120,120))

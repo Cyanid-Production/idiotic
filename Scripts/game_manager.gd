@@ -19,6 +19,10 @@ var wave_countdown : int = 30
 var grain_display : bool = true
 var grass_display : bool = true
 
+var altar_cast : Array[String] = [
+	"air"
+]
+
 @onready var wave_timer : Timer = $WaveTimer
 
 var preloaded_objects = {
@@ -76,7 +80,8 @@ func start_game():
 	new_target()
 	get_parent().get_node("Test/Map/EnemySpawner/Timer").start()
 	notificate(load("res://Sounds/debug1.wav"))
-	set_soundtrack(load("res://Music/light-slaughter.ogg"), 5.0)
+	set_soundtrack(load("res://Music/light-slaughter.ogg"))
+	get_tree().get_current_scene().get_node("Map/House/Room2/Objects/Altar/RechargeTimer").start()
 
 func game_reset():
 	players_amount = 0

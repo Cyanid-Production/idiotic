@@ -4,8 +4,8 @@ extends Node
 var language : String = "en"
 
 var vsync = DisplayServer.VSYNC_ENABLED
-var grain_enabled = true
-var grass_enabled = true
+var grain_enabled
+var grass_enabled
 
 
 func _ready():

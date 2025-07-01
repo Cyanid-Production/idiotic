@@ -38,6 +38,7 @@ func _ready():
 	
 	inventory_items = GameManager.current_profession.start_items
 	current_weapon = GameManager.current_profession.start_weapon
+	GameManager.altar_cast.append_array(GameManager.current_profession.altar_items)
 	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	camera.get_node("Camera3D").current = true
@@ -107,7 +108,8 @@ func _physics_process(delta):
 	if direction:
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
-		leg_anim.rpc("walk_1")
+		if not $Body/Animators/LegsAnimator.is_playing():
+			leg_anim.rpc("walk_1")
 		
 		if velocity.y >= 0.0:
 			var stair_check = not $StairCheck/UpCheck.is_colliding() and $StairCheck/DownCheck.is_colliding()
@@ -135,8 +137,9 @@ func equip_weapon(wpn):
 			attachment_node.get_node("Weapon").queue_free()
 
 func add_to_inventory(item_id : String):
-	inventory_items.append(item_id)
-	ui.refresh_inventory()
+	if item_id != "air":
+		inventory_items.append(item_id)
+		ui.refresh_inventory()
 
 func remove_from_inventory(item_id : String):
 	inventory_items.erase(item_id)
