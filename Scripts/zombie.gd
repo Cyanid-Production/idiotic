@@ -67,8 +67,17 @@ func die():
 	corpse.global_position = global_position
 	corpse.rot_coord = global_rotation
 	add_sibling(corpse)
+	var rand_var = randi_range(0,100)
+	if rand_var == 50:
+		death_drop.rpc()
 	GameManager.bestiary_objects.set("zombie",true)
 	queue_free()
+
+@rpc("any_peer", "call_local")
+func death_drop():
+	var new_drop = GameManager.get_object("fixkit")
+	new_drop.global_position = global_position
+	add_sibling(new_drop)
 
 @rpc("any_peer", "call_local")
 func find_target(host_prevent:bool=true):

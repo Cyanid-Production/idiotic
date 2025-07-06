@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Profession" load_steps=2 format=3 uid="uid://dkp5twgcr315o"]
+
+[ext_resource type="Script" uid="uid://g50cpd44gig0" path="res://Scripts/Data/profession_data.gd" id="1_yx4wb"]
+
+[resource]
+script = ExtResource("1_yx4wb")
+namecode = "SAMURAI_NAME"
+description_code = "SAMURAI_DESC"
+id = "samu"
+altar_items = Array[String]([])
+start_items = Array[String]([])
+start_weapon = ""
+start_melee = "katana"
+metadata/_custom_type_script = "uid://g50cpd44gig0"

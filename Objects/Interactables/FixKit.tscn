@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://c62o6f8l4kug4"]
+
+[ext_resource type="Script" uid="uid://plhqxb33h5t0" path="res://Scripts/Interactables/fix_kit.gd" id="1_re4lk"]
+[ext_resource type="Texture2D" uid="uid://2pn02g6bknb1" path="res://Textures/Objects/Rope/rope_al.png" id="2_nnjlp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qisjw"]
+albedo_color = Color(0.194349, 0.194349, 0.194349, 1)
+albedo_texture = ExtResource("2_nnjlp")
+
+[sub_resource type="BoxMesh" id="BoxMesh_n60ix"]
+material = SubResource("StandardMaterial3D_qisjw")
+size = Vector3(0.25, 0.15, 0.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n60ix"]
+size = Vector3(0.25, 0.15, 0.4)
+
+[node name="FixKit" type="Area3D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_re4lk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
+mesh = SubResource("BoxMesh_n60ix")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
+shape = SubResource("BoxShape3D_n60ix")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -7,3 +7,4 @@ class_name Profession extends Resource
 @export var altar_items : Array[String]
 @export var start_items : Array[String]
 @export var start_weapon : String
+@export var start_melee : String

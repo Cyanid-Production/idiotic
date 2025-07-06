@@ -10,4 +10,5 @@ id = "carp"
 altar_items = Array[String](["planks"])
 start_items = Array[String](["planks", "planks", "planks", "planks", "planks"])
 start_weapon = ""
+start_melee = ""
 metadata/_custom_type_script = "uid://g50cpd44gig0"

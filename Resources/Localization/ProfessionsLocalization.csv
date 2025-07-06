@@ -9,3 +9,5 @@ SOLDIER_NAME,Soldier,Солдат
 SOLDIER_DESC,Ak-47 in inventory.,Ak-47 в инвентаре.
 UNEMPLOYED_NAME,Unemployed,Безработный
 UNEMPLOYED_DESC,Needed for maximum immersion.,Нужен для максимального погружения.
+SAMURAI_NAME,Samurai,Самурай
+SAMURAI_DESC,"Has a katana from the start. \nCannot use melee weapons. \nNo goal, only path.","Имеет катану со старта. \nНе может использовать оружие ближнего боя. \nНет цели, только путь."

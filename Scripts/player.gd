@@ -9,6 +9,7 @@ var is_host : bool = false
 
 var holding : bool = false
 var current_weapon = null
+var melee_weapon = null
 var inventory_items : Array = []
 var craft_allow : bool = false
 var craft_points : int = 0
@@ -20,6 +21,7 @@ var current_trap_id
 @onready var ui : Control = $Attachments/HeadAttachment/Camera/Camera3D/UI
 @onready var interaction_cast : RayCast3D = $Attachments/HeadAttachment/Camera/InteractionCast
 @onready var build_cast : RayCast3D = $Attachments/HeadAttachment/Camera/BuildCast
+@onready var melee_cast : ShapeCast3D = $Attachments/MeleeCast
 @onready var skeleton : Skeleton3D = $Body/Armature/Skeleton3D
 @onready var attachment_node : Node3D = $Attachments
 @onready var look_marker : Marker3D = $Attachments/LookMarker
@@ -38,10 +40,12 @@ func _ready():
 	
 	inventory_items = GameManager.current_profession.start_items
 	current_weapon = GameManager.current_profession.start_weapon
+	melee_weapon = GameManager.current_profession.start_melee
 	GameManager.altar_cast.append_array(GameManager.current_profession.altar_items)
 	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	camera.get_node("Camera3D").current = true
+	camera.get_node("AudioListener3D").current = true
 	ui.refresh_inventory()
 	ui.show()
 	
@@ -83,15 +87,19 @@ func _physics_process(delta):
 				for i in GameManager.get_item(current_trap_id).craft_requirements:
 					remove_from_inventory(i)
 				place_building.rpc(current_trap_id, build_cast.get_collision_point())
-		if get_node("Attachments").get_node("Weapon") != null and not get_node("Attachments").get_node("Weapon").automatic:
+		if get_node("Attachments").get_node_or_null("Weapon") != null and not get_node("Attachments").get_node("Weapon").automatic:
 			get_node("Attachments").get_node("Weapon").shot.rpc()
+		if $Attachments/HandAttachment.get_node_or_null("MeleeWeapon") != null:
+			hand_anim.rpc(melee_weapon+"_1")
+			$Attachments/HandAttachment.get_node("MeleeWeapon/AttackSound").play()
 	
 	if Input.is_action_pressed("LMB"):
-		if get_node("Attachments").get_node("Weapon") != null and get_node("Attachments").get_node("Weapon").automatic:
+		if get_node("Attachments").get_node_or_null("Weapon") != null and get_node("Attachments").get_node("Weapon").automatic:
 			get_node("Attachments").get_node("Weapon").shot.rpc()
 	
 	if not jump_timer.is_stopped() and is_on_floor():
 		velocity.y = jump_velocity
+		$Sounds/JumpSound.play()
 	
 	if Input.is_action_just_pressed("interact"):
 		if interaction_cast.get_collider() != null and interaction_cast.get_collider().has_method("use") and not holding:
@@ -124,17 +132,25 @@ func _physics_process(delta):
 
 @rpc("any_peer", "call_local")
 func equip_weapon(wpn):
-	if wpn != null and wpn != "":
+	if melee_weapon == "":
+		if wpn != null and wpn != "":
+			if not holding:
+				holding = true
+				hand_anim("rifle_1")
+				var weapon = GameManager.get_object(wpn)
+				weapon.position = weapon.positioning
+				attachment_node.add_child(weapon)
+			else:
+				holding = false
+				hand_anim("rifle_1", true)
+				attachment_node.get_node("Weapon").queue_free()
+	else:
 		if not holding:
 			holding = true
-			hand_anim("rifle_1")
-			var weapon = GameManager.get_object(wpn)
-			weapon.position = weapon.positioning
-			attachment_node.add_child(weapon)
+			$Attachments/HandAttachment.add_child(GameManager.get_object(melee_weapon))
 		else:
 			holding = false
-			hand_anim("rifle_1", true)
-			attachment_node.get_node("Weapon").queue_free()
+			$Attachments/HandAttachment.get_node("MeleeWeapon").queue_free()
 
 func add_to_inventory(item_id : String):
 	if item_id != "air":
@@ -192,6 +208,13 @@ func take_damage(dmg : float):
 	ui.health_bar.material.set_shader_parameter("height", health / 100.0)
 	ui.health_label.text = str(health)
 	ui.damage_animator.play("blood"+str(randi_range(1,4)))
+
+func melee_attack():
+	#melee_cast.enabled = true
+	#await get_tree().physics_frame
+	if melee_cast.is_colliding() and melee_cast.get_collider(0).has_method("take_damage"):
+		melee_cast.get_collider(0).take_damage($Attachments/HandAttachment/MeleeWeapon.damage)
+	#melee_cast.enabled = false
 
 @rpc("any_peer", "call_local")
 func die():

@@ -10,4 +10,5 @@ id = "unem"
 altar_items = Array[String](["iron", "planks", "cloth"])
 start_items = Array[String]([])
 start_weapon = ""
+start_melee = ""
 metadata/_custom_type_script = "uid://g50cpd44gig0"

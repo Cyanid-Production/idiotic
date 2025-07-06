@@ -37,9 +37,12 @@ var preloaded_objects = {
 	### WEAPONS ###
 	"hunterrifle" : preload("res://Objects/Weapons/SKSrifle.tscn"),
 	"ak47" : preload("res://Objects/Weapons/AK47.tscn"),
+	### MELEE ###
+	"katana" : preload("res://Objects/Weapons/Katana.tscn"),
 	### OTHER ###
 	"bullethole" : preload("res://Objects/Decor/BulletHole.tscn"),
-	"bloodsplatter" : preload("res://Objects/Effects/BloodSplatter.tscn")
+	"bloodsplatter" : preload("res://Objects/Effects/BloodSplatter.tscn"),
+	"fixkit" : preload("res://Objects/Interactables/FixKit.tscn")
 }
 
 var player_items : Dictionary = {

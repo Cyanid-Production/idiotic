@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://by3hj4vxnlai7"]
+[gd_scene load_steps=24 format=4 uid="uid://by3hj4vxnlai7"]
 
 [ext_resource type="Script" uid="uid://bpui3htdgv8rb" path="res://Scripts/player.gd" id="1_8r7yd"]
 [ext_resource type="Animation" uid="uid://qp72lg3avpm0" path="res://Resources/Animations/Manican/walk_1.anim" id="2_gijnf"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dvlwg60i03ltu" path="res://Objects/UI.tscn" id="2_yk4ok"]
 [ext_resource type="Animation" uid="uid://co725w1hrsvma" path="res://Resources/Animations/Manican/interact_1.anim" id="3_qwxmt"]
 [ext_resource type="AudioStream" uid="uid://dx5ie4j670x3r" path="res://Sounds/Player/step3.wav" id="6_t1tke"]
+[ext_resource type="AudioStream" uid="uid://bevycit1kxc72" path="res://Sounds/Player/jump1.wav" id="7_qwxmt"]
 
 [sub_resource type="Gradient" id="Gradient_t1tke"]
 offsets = PackedFloat32Array(0, 0.579545)
@@ -188,6 +189,38 @@ tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = PackedFloat32Array(0, 1, -0.0286578, 0.391385, 0.0724663, 0.916921)
 
+[sub_resource type="Animation" id="Animation_i4q3a"]
+resource_name = "katana_1"
+length = 0.5
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Armature/Skeleton3D:mixamorig_RightArm")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.496, 0.09157, -0.153242, 0.849774, 0.25, 1, 0.471839, 0.358527, -0.395164, 0.701906, 0.5, 1, 0.496, 0.09157, -0.153242, 0.849774)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Armature/Skeleton3D:mixamorig_RightForeArm")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.120613, -0.679964, -0.12905, 0.711652, 0.25, 1, 0.390839, 0.647808, 0.432631, -0.490327, 0.5, 1, 0, 0, 0, 1)
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"melee_attack"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_qwxmt"]
 resource_name = "rifle_1"
 length = 0.1
@@ -239,6 +272,7 @@ _data = {
 &"RESET": SubResource("Animation_yk4ok"),
 &"hold_1": ExtResource("2_t1tke"),
 &"interact_1": ExtResource("3_qwxmt"),
+&"katana_1": SubResource("Animation_i4q3a"),
 &"rifle_1": SubResource("Animation_qwxmt")
 }
 
@@ -278,6 +312,8 @@ _data = {
 &"RESET": SubResource("Animation_ko2s7"),
 &"walk_1": ExtResource("2_gijnf")
 }
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qwxmt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ot306"]
 radius = 0.25
@@ -618,6 +654,9 @@ fov = 60.0
 [node name="UI" parent="Attachments/HeadAttachment/Camera/Camera3D" instance=ExtResource("2_yk4ok")]
 visible = false
 
+[node name="AudioListener3D" type="AudioListener3D" parent="Attachments/HeadAttachment/Camera"]
+transform = Transform3D(0.999927, 0.00923049, -0.00751382, -0.00706859, 0.968464, 0.249057, 0.00957572, -0.248987, 0.968461, -0.0152326, -1.74018, 0.502736)
+
 [node name="InteractionCast" type="RayCast3D" parent="Attachments/HeadAttachment/Camera"]
 target_position = Vector3(0, 0, -2)
 collision_mask = 2
@@ -630,6 +669,20 @@ target_position = Vector3(0, 0, -5)
 visible = false
 spot_angle = 25.0
 
+[node name="HandAttachment" type="BoneAttachment3D" parent="Attachments"]
+transform = Transform3D(-0.340898, 0.0601785, 0.36078, -0.138198, -0.477825, -0.0508825, 0.338657, -0.134413, 0.342407, 0.354816, 0.849464, -0.235828)
+bone_name = "mixamorig_RightHandIndex4"
+bone_idx = 24
+use_external_skeleton = true
+external_skeleton = NodePath("../../Body/Armature/Skeleton3D")
+
+[node name="MeleeCast" type="ShapeCast3D" parent="Attachments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_qwxmt")
+target_position = Vector3(0, 0, -0.8)
+max_results = 1
+collision_mask = 8
+
 [node name="LookMarker" type="Marker3D" parent="Attachments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.80257, -3)
 
@@ -638,6 +691,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.80257, -3)
 [node name="StepSound" type="AudioStreamPlayer3D" parent="Sounds"]
 stream = ExtResource("6_t1tke")
 volume_db = -15.0
+
+[node name="JumpSound" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("7_qwxmt")
+volume_db = 10.0
 pitch_scale = 0.75
 
 [node name="StairCheck" type="Node3D" parent="."]

@@ -10,4 +10,5 @@ id = "blck"
 altar_items = Array[String](["iron"])
 start_items = Array[String](["iron", "iron", "iron"])
 start_weapon = ""
+start_melee = ""
 metadata/_custom_type_script = "uid://g50cpd44gig0"
