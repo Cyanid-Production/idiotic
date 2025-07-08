@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dvlwg60i03ltu"]
+[gd_scene load_steps=27 format=3 uid="uid://dvlwg60i03ltu"]
 
 [ext_resource type="Script" uid="uid://cvtl56jy5wyfp" path="res://Scripts/ui.gd" id="1_cyweb"]
 [ext_resource type="Script" uid="uid://cifq6de46ei3x" path="res://Scripts/Nodes/trap_menu.gd" id="2_r3uuq"]
@@ -43,6 +43,43 @@ font = ExtResource("3_ct24o")
 font_size = 45
 font_color = Color(0, 0, 0, 1)
 outline_size = 5
+
+[sub_resource type="Animation" id="Animation_84vmj"]
+resource_name = "flash"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xm6e5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xm6e5"]
+_data = {
+&"RESET": SubResource("Animation_xm6e5"),
+&"flash": SubResource("Animation_84vmj")
+}
 
 [sub_resource type="Animation" id="Animation_nogks"]
 length = 0.001
@@ -207,6 +244,21 @@ text = "100.0"
 label_settings = SubResource("LabelSettings_xjmjv")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Flash" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Flash"]
+libraries = {
+&"": SubResource("AnimationLibrary_xm6e5")
+}
 
 [node name="DamageOverlay" type="Control" parent="."]
 layout_mode = 1

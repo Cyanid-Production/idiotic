@@ -21,10 +21,14 @@ var click_scroll_sound = preload("res://Sounds/Effects/click_scroll.wav")
 func _ready():
 	for i in inventory_size:
 		var slot := InventorySlot.new()
-		slot.add_to_grid(Item.Type.MATERIAL, Vector2(120,120))
+		slot.add_to_grid(Item.Type.ITEM, Vector2(120,120))
 		inventory.add_child(slot)
 	
 	refresh_inventory()
+
+func flash():
+	$Flash/AnimationPlayer.play("flash")
+	GameManager.notificate(load("res://Sounds/Player/heal1.wav"))
 
 func refresh_inventory():
 	for f in inventory.get_children():

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://ddg44ppkmghd0"]
+
+[ext_resource type="Script" uid="uid://burv2cpscxnkr" path="res://Scripts/Data/item_data.gd" id="1_nc4ht"]
+[ext_resource type="Texture2D" uid="uid://dvrb28yyudlao" path="res://Textures/UI/Items/sake_icon.png" id="2_00oyd"]
+
+[resource]
+script = ExtResource("1_nc4ht")
+name_code = "SAKENAME"
+id = "sake"
+texture = ExtResource("2_00oyd")
+type = 0
+consumable = true
+use_effect = {
+"health": 5.0
+}
+description_code = "SAKEDESC"
+metadata/_custom_type_script = "uid://burv2cpscxnkr"

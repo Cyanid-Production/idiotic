@@ -51,6 +51,7 @@ var player_items : Dictionary = {
 	"petrol" : preload("res://Resources/Items/Petrol.tres"),
 	"planks" : preload("res://Resources/Items/Planks.tres"),
 	"iron" : preload("res://Resources/Items/Iron.tres"),
+	"sake" : preload("res://Resources/Items/Sake.tres"),
 	### CRAFTABLES ###
 	"spiketrap1" : preload("res://Resources/Traps/SpikeTrap1.tres"),
 	"spiketrap2" : preload("res://Resources/Traps/SpikeTrap2.tres"),
@@ -113,6 +114,7 @@ func instasound3D(caller,snd:AudioStream,vol:float=0.0,ptc:float=1.0):
 	new_sound.stream = snd
 	new_sound.volume_db = vol
 	new_sound.pitch_scale = ptc
+	new_sound.global_position = caller.global_position
 	caller.add_sibling(new_sound)
 
 func notificate(snd:AudioStream):

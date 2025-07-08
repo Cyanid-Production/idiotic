@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=4 uid="uid://c4vojs03p54l4"]
+[gd_scene load_steps=19 format=4 uid="uid://c4vojs03p54l4"]
 
 [ext_resource type="Script" uid="uid://cme3igfdkfd6j" path="res://Scripts/zombie.gd" id="1_6pakv"]
 [ext_resource type="AudioStream" uid="uid://byxomengepdky" path="res://Sounds/Player/step1.wav" id="1_j7nlw"]
+[ext_resource type="AudioStream" uid="uid://d0hkjkpj0dk5q" path="res://Sounds/Effects/meat_1.wav" id="3_64fu3"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_n6db0"]
 
@@ -541,6 +542,10 @@ libraries = {
 
 [node name="StepSound" type="AudioStreamPlayer3D" parent="Sounds"]
 stream = ExtResource("1_j7nlw")
+
+[node name="DamageSound" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("3_64fu3")
+unit_size = 25.0
 
 [node name="TargetCast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)

@@ -3,12 +3,23 @@ class_name InventoryItem extends TextureRect
 
 @export var data : Item
 
+var mouse_selected : bool = false
+
 
 func _ready():
 	expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	texture = data.texture
-	tooltip_text = tr(data.name_code) + "\n" + tr(data.description_code)
+	tooltip_text = tr(data.name_code) + "\n\n" + tr(data.description_code)
+	mouse_entered.connect(on_mouse)
+	mouse_exited.connect(off_mouse)
+
+func _input(event):
+	if mouse_selected:
+		if event.is_action_pressed("RMB") and data.consumable:
+			var effect : String = data.use_effect.keys()[0]
+			GameManager.current_player.add_effect(effect, data.use_effect.get(effect))
+			queue_free()
 
 func initialize(dta:Item):
 	data = dta
@@ -30,3 +41,9 @@ func make_drag_preview(at_position):
 	c.add_child(t)
 	
 	return c
+
+func on_mouse():
+	mouse_selected = true
+
+func off_mouse():
+	mouse_selected = false

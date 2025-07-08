@@ -17,3 +17,4 @@ func _on_recharge_timer_timeout():
 	charge += 1
 	if charge > 0:
 		$MeshInstance3D.show()
+		$ChargeSound.play()

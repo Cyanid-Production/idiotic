@@ -209,12 +209,19 @@ func take_damage(dmg : float):
 	ui.health_label.text = str(health)
 	ui.damage_animator.play("blood"+str(randi_range(1,4)))
 
+func add_effect(eff:String,amt:int=1):
+	match eff:
+		"health":
+			health += amt
+			ui.health_bar.material.set_shader_parameter("height", health / 100.0)
+			ui.health_label.text = str(health)
+			ui.flash()
+
 func melee_attack():
-	#melee_cast.enabled = true
-	#await get_tree().physics_frame
 	if melee_cast.is_colliding() and melee_cast.get_collider(0).has_method("take_damage"):
+		if $Attachments/HandAttachment/MeleeWeapon.durability <= 0: return
 		melee_cast.get_collider(0).take_damage($Attachments/HandAttachment/MeleeWeapon.damage)
-	#melee_cast.enabled = false
+		$Attachments/HandAttachment/MeleeWeapon.durability -= 10.0
 
 @rpc("any_peer", "call_local")
 func die():

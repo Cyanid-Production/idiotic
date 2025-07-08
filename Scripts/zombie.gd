@@ -53,6 +53,7 @@ func take_damage(dmg : float):
 	var new_blood = GameManager.get_object("bloodsplatter")
 	new_blood.global_position = global_position + Vector3(randf_range(-0.25,0.25),randf_range(0.75,1.25),randf_range(-0.25,0.25))
 	add_sibling(new_blood)
+	$Sounds/DamageSound.play()
 	if health <= 0:
 		die.rpc()
 
@@ -67,8 +68,8 @@ func die():
 	corpse.global_position = global_position
 	corpse.rot_coord = global_rotation
 	add_sibling(corpse)
-	var rand_var = randi_range(0,100)
-	if rand_var == 50:
+	var rand_var = randi_range(0,50)
+	if rand_var == 25:
 		death_drop.rpc()
 	GameManager.bestiary_objects.set("zombie",true)
 	queue_free()

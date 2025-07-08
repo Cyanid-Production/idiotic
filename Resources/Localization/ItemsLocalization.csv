@@ -1,9 +1,11 @@
 keys,en,ru
 CLOTHNAME,Cloth,Ткань
-CLOTHDESC,,
+CLOTHDESC,It can be useful for making bandages.,Может пригодится для изготовления бинтов.
 PETROLNAME,Petrol,Бензин
-PETROLDESC,,
+PETROLDESC,It can be used to fuel a generator.,Им можно заправить генератор.
 PLANKSNAME,Planks,Доски
-PLANKSDESC,,
+PLANKSDESC,Can be useful for boarding up windows or building traps.,Может пригодится для заколачивания окон или построения ловушек.
 IRONNAME,Iron,Железо
-IRONDESC,,
+IRONDESC,Can be useful for building traps.,Может пригодится для построения ловушек.
+SAKENAME,Sake,Сакэ
+SAKEDESC,Alcohol. \nSlowly kills you.,Алкоголь. \nМедленно убивает тебя.
