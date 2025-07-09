@@ -3,7 +3,7 @@ HOST,Host,Создать игру
 JOIN,Join,Присоединиться
 QUIT,Quit,Выйти
 SETTINGS,Settings,Настройки
-ProfessionMenu,Professions,Профессии
+ProfessionMenu,Origin,Исход
 BestiaryMenu,Bestiary,Бестиарий
 GameSettings,Game settings,Настройки сложности
 General,General,Общее

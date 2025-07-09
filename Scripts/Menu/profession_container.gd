@@ -6,6 +6,7 @@ var professions_list : Array[Profession] = [
 	load("res://Resources/Professions/Blacksmith.tres"),
 	load("res://Resources/Professions/Carpenter.tres"),
 	load("res://Resources/Professions/Hunter.tres"),
+	load("res://Resources/Professions/Loader.tres"),
 	load("res://Resources/Professions/Soldier.tres"),
 	load("res://Resources/Professions/Samurai.tres")
 ]

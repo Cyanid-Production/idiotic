@@ -61,6 +61,9 @@ func _on_quit_button_pressed():
 	get_tree().quit()
 
 func add_player(peer_id : int, is_host : bool = true):
+	var map = get_tree().get_current_scene().get_node_or_null("Map")
+	if map == null:
+		get_tree().get_current_scene().add_child(load("res://Scenes/Map1.tscn").instantiate())
 	get_tree().get_current_scene().get_node("Map").show()
 	var new_player = GameManager.get_object("player")
 	new_player.name = str(peer_id)

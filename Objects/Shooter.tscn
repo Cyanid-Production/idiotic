@@ -427,7 +427,7 @@ bones/18/name = "mixamorig_RightArm"
 bones/18/parent = 17
 bones/18/rest = Transform3D(0.999697, -0.0188322, -0.015846, -1.83471e-07, 0.643828, -0.76517, 0.0246119, 0.764938, 0.643633, -3.46558e-08, 0.216235, 8.71574e-08)
 bones/18/enabled = true
-bones/18/position = Vector3(-3.46558e-08, 0.216235, 8.71574e-08)
+bones/18/position = Vector3(4.88758e-08, 0.216235, 2.3067e-07)
 bones/18/rotation = Quaternion(0.496394, 0.184218, -0.238425, 0.814132)
 bones/18/scale = Vector3(1, 0.999999, 0.999999)
 bones/19/name = "mixamorig_RightForeArm"
@@ -578,10 +578,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_jmx3o")
 }
 
-[node name="AttackCast" type="RayCast3D" parent="Body"]
+[node name="TargetCast" type="RayCast3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11758e-21, 1, 7.54979e-08)
-visible = false
-target_position = Vector3(0, 0, 10)
+target_position = Vector3(0, 0, 20)
+collision_mask = 5
 
 [node name="Sphere" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5)
@@ -602,7 +602,6 @@ stream = ExtResource("2_5xhx6")
 
 [node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-visible = false
 shape = SubResource("CapsuleShape3D_ot306")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
@@ -610,4 +609,4 @@ shape = SubResource("CapsuleShape3D_ot306")
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_6pakv")
 
-[connection signal="animation_finished" from="Body/Animator" to="." method="_on_animator_animation_finished"]
+[connection signal="animation_finished" from="Body/AttackAnimator" to="." method="_on_animator_animation_finished"]

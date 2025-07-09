@@ -639,7 +639,7 @@ libraries = {
 [node name="Attachments" type="Node3D" parent="."]
 
 [node name="HeadAttachment" type="BoneAttachment3D" parent="Attachments"]
-transform = Transform3D(-0.499439, -0.0219716, 0.00883706, -0.0171375, 0.464081, 0.185296, -0.0163447, 0.184785, -0.464314, 0.00213161, 1.62198, -0.0347455)
+transform = Transform3D(-0.499534, -0.00353426, 0.021283, -0.000268582, 0.494226, 0.0757671, -0.0215728, 0.0756851, -0.493768, 0.00213161, 1.62198, -0.0347455)
 bone_name = "mixamorig_Head"
 bone_idx = 5
 use_external_skeleton = true
@@ -670,7 +670,7 @@ visible = false
 spot_angle = 25.0
 
 [node name="HandAttachment" type="BoneAttachment3D" parent="Attachments"]
-transform = Transform3D(-0.340898, 0.0601785, 0.36078, -0.138198, -0.477825, -0.0508825, 0.338657, -0.134413, 0.342407, 0.354816, 0.849464, -0.235828)
+transform = Transform3D(-0.340898, 0.0601784, 0.36078, -0.138198, -0.477825, -0.0508825, 0.338657, -0.134413, 0.342407, 0.354816, 0.849464, -0.235828)
 bone_name = "mixamorig_RightHandIndex4"
 bone_idx = 24
 use_external_skeleton = true

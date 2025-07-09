@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dvwj8ft366cpc"]
+
+[ext_resource type="Script" uid="uid://burv2cpscxnkr" path="res://Scripts/Data/item_data.gd" id="1_o3mds"]
+[ext_resource type="Texture2D" uid="uid://nh3k5fqlgesg" path="res://Textures/UI/Items/medkit_icon.png" id="2_6pfvj"]
+
+[resource]
+script = ExtResource("1_o3mds")
+name_code = "MEDKITNAME"
+id = "medkit"
+texture = ExtResource("2_6pfvj")
+type = 0
+consumable = true
+use_effect = {
+"health": 25.0
+}
+description_code = "MEDKITDESC"
+metadata/_custom_type_script = "uid://burv2cpscxnkr"

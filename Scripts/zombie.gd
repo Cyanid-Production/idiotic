@@ -10,6 +10,7 @@ var speed : float = 2.0
 
 var target
 var attack_allow : bool = false
+var direction
 
 
 func _ready():
@@ -23,7 +24,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
-	var direction = nav_agent.get_next_path_position() - global_position
+	direction = nav_agent.get_next_path_position() - global_position
 	direction = direction.normalized()
 	
 	if target == null:

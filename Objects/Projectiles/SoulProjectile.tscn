@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxrsnf3jiivnw"]
+
+[ext_resource type="Script" uid="uid://byqqebvin3j4q" path="res://Scripts/projectile.gd" id="1_oxh42"]
+[ext_resource type="AudioStream" uid="uid://c05rbqak36mw5" path="res://Sounds/Effects/scream_1.wav" id="2_ofdac"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i4iqk"]
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_i4iqk"]
+material = SubResource("StandardMaterial3D_i4iqk")
+radius = 0.125
+height = 0.25
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_i4iqk"]
+radius = 0.125
+
+[node name="SoulProjectile" type="Area3D"]
+collision_layer = 0
+collision_mask = 5
+script = ExtResource("1_oxh42")
+speed = 45.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_i4iqk")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_i4iqk")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_ofdac")
+volume_db = -7.5
+autoplay = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

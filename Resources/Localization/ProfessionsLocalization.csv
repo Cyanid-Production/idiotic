@@ -1,13 +1,15 @@
 keys,en,ru
 BLACKSMITH_NAME,Blacksmith,Кузнец
-BLACKSMITH_DESC,Getting iron from the start and at the altar.,Получение железа со старта и на алтаре.
+BLACKSMITH_DESC,Getting iron from the start and at the altar. \n\n,Получение железа со старта и на алтаре. \n\n
 HUNTER_NAME,Hunter,Охотник
-HUNTER_DESC,Rifle and bandages in inventory.,Винтовка и повязки в инвентаре.
+HUNTER_DESC,Rifle and bandages in inventory. \n\n,Винтовка и повязки в инвентаре. \n\n
 CARPENTER_NAME,Carpenter,Плотник
-CARPENTER_DESC,Getting planks from the start and at the altar.,Получение досок со старта и на алтаре.
+CARPENTER_DESC,Getting planks from the start and at the altar. \n\n,Получение досок со старта и на алтаре. \n\n
 SOLDIER_NAME,Soldier,Солдат
-SOLDIER_DESC,Ak-47 in inventory.,Ak-47 в инвентаре.
+SOLDIER_DESC,Ak-47 in inventory. \n\n,Ak-47 в инвентаре. \n\n
 UNEMPLOYED_NAME,Unemployed,Безработный
-UNEMPLOYED_DESC,Needed for maximum immersion.,Нужен для максимального погружения.
+UNEMPLOYED_DESC,Needed for maximum immersion. \n\n,Нужен для максимального погружения. \n\n
 SAMURAI_NAME,Samurai,Самурай
-SAMURAI_DESC,"Has a katana from the start. \nCannot use melee weapons. \nNo goal, only path.","Имеет катану со старта. \nНе может использовать оружие ближнего боя. \nНет цели, только путь."
+SAMURAI_DESC,"Has a katana from the start. \nCannot use firearms. \nNo goal, only path.","Имеет катану со старта. \nНе может использовать огнестрельное оружие. \nНет цели, только путь."
+LOADER_NAME,Loader,Грузчик
+LOADER_DESC,Bigger inventory size. \n\n,Больший размер инвентаря. \n\n

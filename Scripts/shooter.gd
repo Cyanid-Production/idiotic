@@ -1,12 +1,13 @@
 extends CharacterBody3D
 
 
-var health : float = 80.0
-var speed : float = 1.5
+var health : float = 90.0
+var speed : float = 2.5
 
 @onready var nav_agent : NavigationAgent3D = $NavigationAgent3D
-@onready var target_cast : RayCast3D = $Body/AttackCast
+@onready var target_cast : RayCast3D = $Body/TargetCast
 @onready var body_animator : AnimationPlayer = $Body/Animator
+@onready var attack_animator : AnimationPlayer = $Body/AttackAnimator
 
 var target
 var attack_allow : bool = false
@@ -14,7 +15,6 @@ var attack_allow : bool = false
 
 func _ready():
 	GameManager.enemies_array.append(self)
-	#attack_line($Sphere/Marker3D.position)
 
 func _physics_process(delta):
 	if not target == GameManager.current_player:
@@ -28,44 +28,21 @@ func _physics_process(delta):
 	
 	if target == null:
 		direction = global_position - global_position
-	elif body_animator.current_animation != "attack_1" and transform.origin.distance_to(target.position) > 1.5:
+	else:
+		pass
+	
+	if target_cast.is_colliding() and target_cast.get_collider().has_method("take_damage") and not attack_animator.is_playing():
+		direction = global_position - global_position
+		look_at(Vector3(target.global_position.x,global_position.y,target.global_position.z))
+		attack_anim.rpc("attack_1")
+	else:
 		nav_agent.target_position = target.global_position
 		look_at(Vector3(nav_agent.get_next_path_position().x,global_position.y,nav_agent.get_next_path_position().z))
-		body_anim.rpc("walk_1")
-	else:
-		direction = Vector3(0.0,0.0,0.0)
-	if target_cast.is_colliding() and not body_animator.current_animation == "attack_1":
-		if target_cast.get_collider() != null and target_cast.get_collider().is_in_group("Obstacles"):
-			if target_cast.get_collider().locked:
-				body_anim.rpc("attack_1")
-			else:
-				if is_on_floor():
-					velocity.y = 8.0
-		else:
-			body_anim.rpc("attack_1")
+		if not body_animator.is_playing():
+			body_anim.rpc("walk_1")
 	
 	velocity = velocity.lerp(direction*speed,5*delta)
 	move_and_slide()
-
-#func attack_line(aps:Vector3):
-	#var mesh_instance = MeshInstance3D.new()
-	#var immediate_mesh = ImmediateMesh.new()
-	#var material = ORMMaterial3D.new()
-	
-	#mesh_instance.mesh = immediate_mesh
-	
-	#mesh_instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-	#material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-	#material.albedo_color = Color.WHITE
-	
-	#immediate_mesh.surface_begin(Mesh.PRIMITIVE_LINES, material)
-	#immediate_mesh.surface_add_vertex(Vector3(0.0,0.0,0.0))
-	#immediate_mesh.surface_add_vertex(aps)
-	#immediate_mesh.surface_end()
-	
-	#mesh_instance.set_script(load("res://Scripts/Effects/line.gd"))
-	
-	#$Sphere.add_child(mesh_instance)
 
 func take_damage(dmg : float):
 	health -= dmg
@@ -92,12 +69,15 @@ func find_target(host_prevent:bool=true):
 func body_anim(anim_name : String):
 	body_animator.play(anim_name)
 
+@rpc("any_peer", "call_local")
+func attack_anim(anim_name : String):
+	attack_animator.play(anim_name)
+
 func _on_animator_animation_finished(anim_name):
 	match anim_name:
 		"attack_1":
-			if target_cast.is_colliding():
-				if target_cast.get_collider().is_in_group("Obstacles") and not target_cast.get_collider().locked:
-					pass
-				else:
-					if target_cast.get_collider().has_method("take_damage"):
-						target_cast.get_collider().take_damage(20.0)
+			var new_proj = preload("res://Objects/Projectiles/SoulProjectile.tscn").instantiate()
+			new_proj.global_position = global_position + Vector3(0.0,1.0,0.0)
+			new_proj.target_vector = global_position.direction_to(target.global_position)
+			#new_proj.velocity = -new_proj.transform.basis.z
+			add_sibling(new_proj)

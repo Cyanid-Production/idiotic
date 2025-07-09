@@ -29,6 +29,7 @@ var preloaded_objects = {
 	### CHARACTERS ###
 	"player" : preload("res://Objects/Player.tscn"),
 	"zombie" : preload("res://Objects/Zombie.tscn"),
+	"shooter" : preload("res://Objects/Shooter.tscn"),
 	"corpse" : preload("res://Objects/Corpse.tscn"),
 	### TRAPS ###
 	"spiketrap1" : preload("res://Objects/Traps/SpikeTrap1.tscn"),
@@ -52,6 +53,7 @@ var player_items : Dictionary = {
 	"planks" : preload("res://Resources/Items/Planks.tres"),
 	"iron" : preload("res://Resources/Items/Iron.tres"),
 	"sake" : preload("res://Resources/Items/Sake.tres"),
+	"medkit" : preload("res://Resources/Items/Medkit.tres"),
 	### CRAFTABLES ###
 	"spiketrap1" : preload("res://Resources/Traps/SpikeTrap1.tres"),
 	"spiketrap2" : preload("res://Resources/Traps/SpikeTrap2.tres"),

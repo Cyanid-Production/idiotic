@@ -19,6 +19,8 @@ var click_scroll_sound = preload("res://Sounds/Effects/click_scroll.wav")
 
 
 func _ready():
+	if GameManager.current_profession.id == "load":
+		inventory_size += 12
 	for i in inventory_size:
 		var slot := InventorySlot.new()
 		slot.add_to_grid(Item.Type.ITEM, Vector2(120,120))
@@ -58,6 +60,7 @@ func hide_hint():
 
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("inventory"):
+		GameManager.notificate(load("res://Sounds/Effects/click_interface.wav"))
 		if inventory.visible:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			inventory.hide()
@@ -70,6 +73,7 @@ func _physics_process(_delta):
 		elif not root_player.holding:
 			trap_menu.show()
 	if Input.is_action_just_pressed("ESC"):
+		GameManager.notificate(load("res://Sounds/Effects/click_interface.wav"))
 		if $ExitMenu.visible:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		else:
