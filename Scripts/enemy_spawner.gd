@@ -17,7 +17,7 @@ func spawn_enemy():
 	for i in (1+(wave_passed*2)):
 		var current_point = spawns_array.pick_random()
 		var spawnpos = current_point.global_position
-		var new_enemy = GameManager.get_object("zombie")
+		var new_enemy = GameManager.get_object("dodger")
 		new_enemy.global_position = spawnpos
 		add_child(new_enemy, true)
 	for y in round(0.1*wave_passed):

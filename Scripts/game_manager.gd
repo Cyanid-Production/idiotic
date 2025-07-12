@@ -30,6 +30,7 @@ var preloaded_objects = {
 	"player" : preload("res://Objects/Player.tscn"),
 	"zombie" : preload("res://Objects/Zombie.tscn"),
 	"shooter" : preload("res://Objects/Shooter.tscn"),
+	"dodger" : preload("res://Objects/Dodger.tscn"),
 	"corpse" : preload("res://Objects/Corpse.tscn"),
 	### TRAPS ###
 	"spiketrap1" : preload("res://Objects/Traps/SpikeTrap1.tscn"),
