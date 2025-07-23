@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://0e44jgr277hd"]
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://0e44jgr277hd"]
 
 [ext_resource type="Script" uid="uid://burv2cpscxnkr" path="res://Scripts/Data/item_data.gd" id="1_21pt5"]
+[ext_resource type="AudioStream" uid="uid://hdhmcl7fi2bs" path="res://Sounds/Items/cloth_1.wav" id="2_7t8ha"]
 [ext_resource type="Texture2D" uid="uid://cna11y1f7cg24" path="res://Textures/UI/Items/petrol_icon.png" id="2_l6yrt"]
 
 [resource]
@@ -9,5 +10,8 @@ name_code = "PETROLNAME"
 id = "petrol"
 texture = ExtResource("2_l6yrt")
 type = 1
+consumable = false
+use_effect = {}
 description_code = "PETROLDESC"
+sound = ExtResource("2_7t8ha")
 metadata/_custom_type_script = "uid://burv2cpscxnkr"

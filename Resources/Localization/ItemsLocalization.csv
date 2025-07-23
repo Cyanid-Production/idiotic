@@ -9,3 +9,5 @@ IRONNAME,Iron,Железо
 IRONDESC,Can be useful for building traps.,Может пригодится для построения ловушек.
 SAKENAME,Sake,Сакэ
 SAKEDESC,Alcohol. \nSlowly kills you.,Алкоголь. \nМедленно убивает тебя.
+MEDKITNAME,Medkit,Аптечка
+MEDKITDESC,"This box has everything you need: bandages, syringes, CORES OF LIFE ENERGY?","В этой коробке есть все необходимое: бинты, шприцы, ЯДРА ЖИЗНЕННОЙ ЭНЕРГИИ?"

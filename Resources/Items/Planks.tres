@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://dv5nbqgv6j88t"]
+[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://dv5nbqgv6j88t"]
 
 [ext_resource type="Script" uid="uid://burv2cpscxnkr" path="res://Scripts/Data/item_data.gd" id="1_m7eor"]
 [ext_resource type="BoxMesh" uid="uid://dflmehxm24fnx" path="res://Resources/Meshes/PickablePlanks.tres" id="1_tfrp5"]
 [ext_resource type="Texture2D" uid="uid://chx3s7wqcplca" path="res://Textures/UI/Items/planks_icon.png" id="2_hapgu"]
+[ext_resource type="AudioStream" uid="uid://bqhx1otigfj2h" path="res://Sounds/Items/planks_1.wav" id="3_tc33w"]
 
 [resource]
 script = ExtResource("1_m7eor")
@@ -10,6 +11,9 @@ name_code = "PLANKSNAME"
 id = "planks"
 texture = ExtResource("2_hapgu")
 type = 0
+consumable = false
+use_effect = {}
 description_code = "PLANKSDESC"
 model = ExtResource("1_tfrp5")
+sound = ExtResource("3_tc33w")
 metadata/_custom_type_script = "uid://burv2cpscxnkr"

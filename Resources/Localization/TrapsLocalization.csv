@@ -5,3 +5,5 @@ SPKTRP2_NAME,SPIKE TRAP,ЛОВУШКА С ШИПАМИ
 SPKTRP2_DESC,Enough to hold back the crowd for a while.,Достаточно чтобы ненадолго сдержать толпу.
 SPKTRP3_NAME,SPIKE TRAP,ЛОВУШКА С ШИПАМИ
 SPKTRP3_DESC,Can be a serious problem. For everyone.,Может составить серьёзную проблему. Для всех.
+DFNTRP1_NAME,PROTECTION FIELD,ЗАЩИТНОЕ ПОЛЕ
+DFNTRP1_DESC,Protection against projectiles.,Защита против снарядов.

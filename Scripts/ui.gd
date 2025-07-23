@@ -60,7 +60,7 @@ func hide_hint():
 
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("inventory"):
-		GameManager.notificate(load("res://Sounds/Effects/click_interface.wav"))
+		GameManager.notificate(load("res://Sounds/Effects/inventory_1.wav"))
 		if inventory.visible:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			inventory.hide()
@@ -73,7 +73,7 @@ func _physics_process(_delta):
 		elif not root_player.holding:
 			trap_menu.show()
 	if Input.is_action_just_pressed("ESC"):
-		GameManager.notificate(load("res://Sounds/Effects/click_interface.wav"))
+		GameManager.notificate(load("res://Sounds/Effects/click_scroll.wav"))
 		if $ExitMenu.visible:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		else:
@@ -83,6 +83,9 @@ func _physics_process(_delta):
 func _on_menu_button_pressed():
 	get_tree().get_current_scene().get_node("Menu").enable()
 	get_tree().get_current_scene().get_node("Map").queue_free()
+	GameManager.get_node("MusicPlayer").stop()
 
 func _on_quit_button_pressed():
+	GameManager.save_data()
+	await get_tree().physics_frame
 	get_tree().quit()

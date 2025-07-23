@@ -14,3 +14,7 @@ func _ready():
 
 func _on_simulation_timer_timeout():
 	$AnimationPlayer.play("bleeding")
+
+func _on_visible_on_screen_notifier_3d_screen_exited():
+	if $DespawnTimer.is_stopped():
+		queue_free()

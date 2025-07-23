@@ -10,3 +10,4 @@ enum Type {ITEM}
 @export var use_effect : Dictionary
 @export_multiline var description_code : String
 @export var model : Mesh
+@export var sound : AudioStream

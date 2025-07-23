@@ -82,6 +82,7 @@ func  _on_language_option_item_selected(index):
 			language = "ru"
 	TranslationServer.set_locale(language)
 	save_data()
+	get_tree().get_current_scene().get_node("Menu/Sounds/BestiarySound").play()
 
 func _on_vsync_option_item_selected(index):
 	var item_id = $Graphics/MarginContainer/VBoxContainer/Vsync/VsyncOption.get_item_id(index)
@@ -96,16 +97,19 @@ func _on_vsync_option_item_selected(index):
 			vsync = DisplayServer.VSYNC_MAILBOX
 	DisplayServer.window_set_vsync_mode(vsync)
 	save_data()
+	get_tree().get_current_scene().get_node("Menu/Sounds/BestiarySound").play()
 
 func _on_grass_check_toggled(toggled_on):
 	grass_enabled = toggled_on
 	GameManager.grass_display = toggled_on
 	save_data()
+	get_tree().get_current_scene().get_node("Menu/Sounds/BestiarySound").play()
 
 func _on_grain_check_toggled(toggled_on):
 	grain_enabled = toggled_on
 	GameManager.grain_display = toggled_on
 	save_data()
+	get_tree().get_current_scene().get_node("Menu/Sounds/BestiarySound").play()
 
 func _on_tab_selected(tab):
 	$"../../Sounds/CustomizeSound".play()

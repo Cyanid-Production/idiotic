@@ -19,6 +19,8 @@ func enable():
 	show()
 	$SubViewportContainer/SubViewport/Objects.show()
 	$Control/TabContainer/ProfessionMenu/SubViewportContainer/SubViewport/Objects.show()
+	await get_tree().physics_frame
+	GameManager.game_reset()
 
 func ready_check():
 	if GameManager.current_profession != null:
@@ -32,21 +34,17 @@ func _on_host_button_pressed():
 	if not ready_check(): return
 	
 	disable()
-	
 	enet_peer.create_server(PORT)
 	multiplayer.multiplayer_peer = enet_peer
 	multiplayer.peer_connected.connect(add_player)
-	
 	add_player(multiplayer.get_unique_id())
 
 func _on_join_button_pressed():
 	if not ready_check(): return
 	
 	disable()
-	
 	enet_peer.create_client(adress_enter.text, PORT)
 	multiplayer.multiplayer_peer = enet_peer
-	
 	add_player(multiplayer.get_unique_id(), false)
 
 func _on_character_button_pressed():
@@ -58,6 +56,8 @@ func _on_settings_button_pressed():
 	$Control/SettingsContainer.visible = !$Control/SettingsContainer.visible
 
 func _on_quit_button_pressed():
+	GameManager.save_data()
+	await get_tree().physics_frame
 	get_tree().quit()
 
 func add_player(peer_id : int, is_host : bool = true):

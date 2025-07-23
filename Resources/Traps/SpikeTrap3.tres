@@ -9,5 +9,5 @@ name_tag = "SPKTRP3_NAME"
 description_tag = "SPKTRP3_DESC"
 thumnbail = ExtResource("2_etjuj")
 trap_id = "spiketrap3"
-craft_requirements = Array[String](["planks", "planks", "iron", "iron", "cloth"])
+craft_requirements = Array[String](["planks", "planks", "planks", "iron", "iron", "iron"])
 metadata/_custom_type_script = "uid://dihp3x412umxa"

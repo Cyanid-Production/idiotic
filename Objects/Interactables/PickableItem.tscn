@@ -18,5 +18,3 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_frhwy")
-
-[node name="PickupSound" type="AudioStreamPlayer3D" parent="."]

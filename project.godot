@@ -17,10 +17,15 @@ boot_splash/bg_color=Color(1, 1, 1, 1)
 boot_splash/show_image=false
 boot_splash/image="uid://bkns5itj80vdj"
 config/icon="uid://iw0smwnrx5uu"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
 GameManager="*res://Objects/GameManager.tscn"
+
+[debug]
+
+gdscript/warnings/unused_parameter=0
 
 [display]
 
@@ -120,7 +125,7 @@ ESC={
 locale/translation_remaps={
 "res://Sounds/Voicelines/English/HangmanWhy.wav": PackedStringArray("res://Sounds/Voicelines/Russian/HangmanWhy.wav:ru")
 }
-locale/translations=PackedStringArray("res://Resources/Localization/ItemsLocalization.en.translation", "res://Resources/Localization/ItemsLocalization.ru.translation", "res://Resources/Localization/TrapsLocalization.en.translation", "res://Resources/Localization/TrapsLocalization.ru.translation", "res://Resources/Localization/DeathMessagesLocalization.en.translation", "res://Resources/Localization/DeathMessagesLocalization.ru.translation", "res://Resources/Localization/ProfessionsLocalization.en.translation", "res://Resources/Localization/ProfessionsLocalization.ru.translation", "res://Resources/Localization/UILocalization.en.translation", "res://Resources/Localization/UILocalization.ru.translation")
+locale/translations=PackedStringArray("res://Resources/Localization/ItemsLocalization.en.translation", "res://Resources/Localization/ItemsLocalization.ru.translation", "res://Resources/Localization/TrapsLocalization.en.translation", "res://Resources/Localization/TrapsLocalization.ru.translation", "res://Resources/Localization/DeathMessagesLocalization.en.translation", "res://Resources/Localization/DeathMessagesLocalization.ru.translation", "res://Resources/Localization/ProfessionsLocalization.en.translation", "res://Resources/Localization/ProfessionsLocalization.ru.translation", "res://Resources/Localization/UILocalization.en.translation", "res://Resources/Localization/UILocalization.ru.translation", "res://Resources/Localization/BestiaryLocalization.en.translation", "res://Resources/Localization/BestiaryLocalization.ru.translation")
 locale/locale_filter_mode=0
 
 [layer_names]
@@ -133,6 +138,7 @@ locale/locale_filter_mode=0
 3d_physics/layer_6="climbs"
 3d_physics/layer_7="borders"
 3d_physics/layer_8="ste"
+3d_physics/layer_9="shields"
 
 [rendering]
 

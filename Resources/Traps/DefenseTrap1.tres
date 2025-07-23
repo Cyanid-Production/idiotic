@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Trap" load_steps=4 format=3 uid="uid://dhda4uk761fpb"]
+
+[ext_resource type="Script" uid="uid://dihp3x412umxa" path="res://Scripts/Data/trap_data.gd" id="1_rh5ps"]
+[ext_resource type="Texture2D" uid="uid://p0tcm6j5ogxs" path="res://Textures/UI/Traps/defensetrap1.png" id="2_a4w35"]
+[ext_resource type="PackedScene" uid="uid://c5q0fv1jc2l2l" path="res://Objects/Traps/DefenseTrap1.tscn" id="3_o5top"]
+
+[resource]
+script = ExtResource("1_rh5ps")
+name_tag = "DFNTRP1_NAME"
+description_tag = "DFNTRP1_DESC"
+thumnbail = ExtResource("2_a4w35")
+trap_scene = ExtResource("3_o5top")
+trap_id = "defensetrap1"
+craft_requirements = Array[String](["iron", "iron", "medkit"])
+metadata/_custom_type_script = "uid://dihp3x412umxa"

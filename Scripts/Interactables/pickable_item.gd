@@ -12,4 +12,5 @@ func _ready():
 @rpc("any_peer", "call_local")
 func use(usr):
 	GameManager.get_player(usr).add_to_inventory(item_to_pick.id)
+	GameManager.instasound3D(self, item_to_pick.sound)
 	queue_free()

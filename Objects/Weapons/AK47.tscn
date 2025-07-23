@@ -1,8 +1,8 @@
 [gd_scene load_steps=39 format=4 uid="uid://b358m0v056hx1"]
 
 [ext_resource type="Script" uid="uid://lywolxlbgts" path="res://Scripts/Interactables/weapon.gd" id="1_jt4og"]
-[ext_resource type="AudioStream" uid="uid://so8whh7u0b2c" path="res://Sounds/Weapons/ak47shot.wav" id="2_j6wha"]
 [ext_resource type="Texture2D" uid="uid://bo7e30apib18g" path="res://Textures/Objects/Metal/metal_ao.png" id="2_oodmp"]
+[ext_resource type="AudioStream" uid="uid://jkxi6fxcued4" path="res://Sounds/Weapons/ak47shot2.wav" id="3_siuf3"]
 [ext_resource type="Texture2D" uid="uid://bod12g2uddsj7" path="res://Textures/crosshair.png" id="5_6mi4h"]
 [ext_resource type="Texture2D" uid="uid://bdgnhf0if5es3" path="res://Textures/Effects/muzzleflash_1.png" id="5_sq5h6"]
 [ext_resource type="Texture2D" uid="uid://dxqy0lc6b6y3m" path="res://Textures/Effects/muzzleflash_2.png" id="6_j6wha"]
@@ -656,8 +656,8 @@ transform = Transform3D(-9.71364e-07, 4.85672e-07, 11.1111, 11.1111, -4.85682e-0
 
 [node name="ShootSound" type="AudioStreamPlayer3D" parent="Model/Skeleton3D/Muzzle"]
 transform = Transform3D(1, 4.6454e-14, 1.06582e-14, -4.26326e-14, 1, -1.42109e-14, -1.06582e-14, 1.06582e-14, 1, 0, 0, 0)
-stream = ExtResource("2_j6wha")
-volume_db = -20.0
+stream = ExtResource("3_siuf3")
+volume_db = -15.0
 
 [node name="Muzzleflash" type="Sprite3D" parent="Model/Skeleton3D/Muzzle"]
 transform = Transform3D(0.09, 3.21865e-07, -3.25799e-07, -3.21865e-07, 0.09, 3.93521e-09, 3.25799e-07, -3.93404e-09, 0.09, 0, 0, 0)

@@ -18,7 +18,7 @@ func _ready():
 	random_setup.rpc()
 
 func _physics_process(delta):
-	if not target == GameManager.current_player:
+	if not target == GameManager.players_array[0]:
 		return
 	
 	if not is_on_floor():
@@ -37,7 +37,7 @@ func _physics_process(delta):
 	else:
 		direction = Vector3(0.0,0.0,0.0)
 	if target_cast.is_colliding() and not body_animator.current_animation == "attack_1":
-		if target_cast.get_collider() != null and target_cast.get_collider().is_in_group("Obstacles"):
+		if target_cast.get_collider().is_in_group("Obstacles"):
 			if target_cast.get_collider().locked:
 				body_anim.rpc("attack_1")
 			else:
@@ -72,7 +72,7 @@ func die():
 	var rand_var = randi_range(0,50)
 	if rand_var == 25:
 		death_drop.rpc()
-	GameManager.bestiary_objects.set("zombie",true)
+	GameManager.bestiary_objects.set("ZOMBIE",true)
 	queue_free()
 
 @rpc("any_peer", "call_local")

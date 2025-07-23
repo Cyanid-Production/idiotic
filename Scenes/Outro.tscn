@@ -1,0 +1,114 @@
+[gd_scene load_steps=14 format=4 uid="uid://ch1fbtjmbq4cg"]
+
+[ext_resource type="LightmapGIData" uid="uid://da3p4ddh13ho5" path="res://Resources/Lightmaps/Outro.lmbake" id="1_sajas"]
+[ext_resource type="PackedScene" uid="uid://ds6i3fgbgauna" path="res://Objects/CutscenePlayer.tscn" id="2_4umaj"]
+
+[sub_resource type="Environment" id="Environment_kgqfv"]
+background_mode = 1
+background_color = Color(1, 1, 1, 1)
+fog_light_color = Color(0.22431, 0.246636, 0.281735, 1)
+volumetric_fog_enabled = true
+volumetric_fog_emission = Color(1, 1, 1, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_kgqfv"]
+lightmap_size_hint = Vector2i(1090, 1114)
+_surfaces = [{
+"aabb": AABB(-5, -19.5, -5, 10, 20, 35),
+"attribute_data": PackedByteArray("ZmYmPwAAgD/w4X8/fmYFPwAAgD8AAIA/1LxuP35mBT9mZiY/AAAAAPDhfz8ZjWE/MzOzPgAAAACGomY+iUkgPwAAAAAAAAAAFw4iPolJID8zM7M+AACAP4aiZj7cRYg+AAAAAAAAAAB3o2Q/XSl+PgAAAAAAAIA/Y241P10pfj4AAIA/AACAP2NuNT/zsBs/AACAPwAAAACRTD0+WlHrOQAAAAAAAAAAkUw9PnOQOD4AAIA/AACAP8R/8DlaUes5AAAAADMzsz7oavY9c5A4PgAAAAAAAAAAh+BiPvq7Iz8AAAAAAACAP4fgYj6W4n8/AACAPwAAgD/aMBg9luJ/PwAAAAAAAIA/Fw4iPtxFiD4AAIA/AAAAAHejZD/zsBs/AAAAAGZmJj+WGoE+yGRzPgAAAAAAAIA/EB5APshkcz4AAIA/AACAPxAeQD78J209AAAAADMzsz6ibZ0+yGRzPgAAAABmZiY/uB6FPXOQOD4AAAAAAACAP8R/8DlzkDg+AAAAAAAAAADw4b8+/CdtPQAAAAAAAIA/8OG/Pt4MdD4AAIA/AACAPwAfPj/eDHQ+AACAPwAAAADaMBg9+rsjPwAAAAAAAAAAMHm+Pshkcz4AAIA/AAAAADB5vj78J209AACAPwAAAAAAHz4//CdtPQAAgD8AAAAA1LxuPxmNYT8AAAAAAAAAAOhq9j2CMQo/AAAAAAAAgD+4HoU9gjEKPwAAgD8AAIA/uB6FPXOQOD4AAAAAAACAPwKbNj/BTB0/AACAPwAAgD8CmzY/XHN5PwAAAAAAAAAA9NmwPsFMHT8AAIA/AAAAAOhq9j1zkDg+AACAPwAAgD+WGoE+yGRzPgAAgD8AAAAAom2dPshkcz4AAAAAAAAAAKJtnT6Y5hg/AACAPwAAAAD02bA+XHN5PwAAAAAAAIA/lhqBPpjmGD8AAIA/AACAP/ZVqT7zsBs/AAAAAAAAAAAD2TI/XSl+PgAAAAAAAIA/9lWpPl0pfj4AAIA/AAAAAAPZMj/zsBs/AACAP83MTD+4HoU9gjEKPwAAgD/NzEw+6Gr2PYIxCj8AAAAAAAAAAHwXDj7bNCE/zcxMPgAAgD/Bxfs8gC1xPwAAAAAAAAAA0eM7POUGFT8AAAAAAACAP9HjOzyALXE/AACAPwAAAAB8Fw4+gjEKPwAAAAAAAAAAe5tVP6nQIj8AAAAAAACAP+HiPT+p0CI/AACAPwAAgD/h4j0/RPd+PwAAgD8AAAAAe5tVP0T3fj/NzEw+AAAAAMHF+zzlBhU/AAAAAAAAAADaT1Y/XHN5PwAAAAAAAIA/2k9WP8FMHT8AAIA/AACAP3QIbj/BTB0/AAAAAAAAAACm3qY+8OkvPwAAAAAAAIA/JFNvPvDpLz8AAIA/AACAPyRTbz6Y5hg/AACAP83MTD+WGoE+mOYYPwAAgD/NzEw+om2dPpjmGD8AAIA/AAAAAKbepj6Y5hg/zcxMPwAAAAD9RYs+/+7YPAAAgD8AAIA/B9EjP28G+jsAAIA/AAAAAP1Fiz5vBvo7AACAPwAAgD9QtT49gjEKPwAAAAAAAIA/ULU+Pds0IT8AAIA/AAAAAHQIbj9cc3k/AAAAAAAAAADXV2U/JiYBPgAAAAAAAIA/cRB9PyYmAT4AAIA/AACAP3EQfT9K4Pg+zcxMPwAAgD8H0SM//+7YPAAAgD8AAAAA11dlP0rg+D4="),
+"format": 34359742519,
+"index_count": 132,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUABgAHAAgACQAKAAsACwAKAAwADQAOAA8ABQAEABAAEQAGAAgAEgATABQAFQASABQADAAWAAsAFgAXAAsAGAAZABoADQAPABsAHAAVABQAHAAUAB0AGgAeABgAAgABAB8AIAAhACIAIwAkACUAIgAmACAAJwAoACkAJQAkACoAKQArACcALAAtAC4ALwAtACwAMAAxADIAMwA0ADUAMQA2ADIANwA4ADkAOgA3ADkAOwA0ADMAPAA9AD4APwBAAEEAQgA/AEEAQwBEAD8AQgBDAD8ARQBGAEcAMAAyAEgASAAyAEkASgA8AD4ASwBMAE0ATgBGAEUATQBPAEsA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 80,
+"vertex_data": PackedByteArray("AADAvwAAnMEAAKBAAACgwAAAnMEAAKBAAADAvwAAAD8AAKBAAADAPwAAAD8AAKBAAACgQAAAAD8AAKBAAADAPwAAnMEAAKBAAACgQAAAAD8AAKBAAACgQAAAAD8AAKDAAACgQAAAnMEAAKDAAACgQAAAAD8AAKDAAACgQAAAAD8AAKBAAACgwAAAAD8AAKDAAADAPwAAAD8AAKBAAACgQAAAnMEAAKDAAACgQAAAAD8AAKDAAACgwAAAAD8AAKDAAACgQAAAnMEAAKBAAACgQAAAnMEAAKBAAADAPwAAnMEAAKBAAACgQAAAnMEAAKBAAACgQAAAnMEAAKDAAADAvwAAnMEAAKBAAADAvwAAAD8AAKBAAACgwAAAAD8AAKBAAACgwAAAAD8AAKDAAACgwAAAAD8AAKBAAACgwAAAnMEAAKBAAACgwAAAnMEAAKDAAACgwAAAnMEAAKBAAACgwAAAnMEAAKDAAACgwAAAnMEAAKDAAACgwAAAAD8AAKBAAADAPwAAAD8AAMhBAADAvwAAAD8AAMhBAADAvwAAAD8AAKBAAADAvwAAAD8AAMhBAADAvwAAnMEAAMhBAADAvwAAAD8AAKBAAADAPwAAAD8AAKBAAADAPwAAnMEAAKBAAADAvwAAnMEAAKBAAADAvwAAnMEAAMhBAADAvwAAnMEAAKBAAADAPwAAnMEAAMhBAADAPwAAnMEAAKBAAADAPwAAAD8AAMhBAADAPwAAAD8AAKBAAADAPwAAnMEAAMhBAADAvwAAAD8AAMhBAADAPwAAAD8AAMhBAAAgQAAAAD8AAPBBAADAPwAAAD8AAMhBAAAgQAAAnMEAAMhBAAAgQAAAAD8AAMhBAAAgQAAAAD8AAMhBAAAgQAAAAD8AAPBBAAAgQAAAAD8AAMhBAAAgQAAAnMEAAMhBAAAgQAAAnMEAAPBBAADAPwAAnMEAAMhBAAAgQAAAAD8AAPBBAAAgQAAAnMEAAPBBAAAgwAAAnMEAAPBBAAAgwAAAnMEAAPBBAAAgQAAAnMEAAPBBAAAgQAAAnMEAAMhBAADAPwAAnMEAAMhBAADAvwAAnMEAAMhBAAAgwAAAnMEAAMhBAADAvwAAnMEAAMhBAAAgwAAAAD8AAMhBAAAgwAAAnMEAAMhBAAAgwAAAAD8AAMhBAAAgwAAAAD8AAPBBAAAgwAAAAD8AAPBBAAAgwAAAAD8AAMhBAAAgwAAAAD8AAPBBAAAgwAAAnMEAAPBBAADAvwAAAD8AAMhBAAAgwAAAnMEAAMhB/3//fwAA/z//f/9/AAD/P/9//38AAP8//3//fwAA/z//f/9/AAD/P/9//38AAP8///8AgP9//n///wCA/3/+f///AID/f/5/AID/////AAAAgP////8AAACA/////wAAAID/////AAD/////AAD/P/////8AAP8//////wAA/z//f/9/AAD/P///AID/f/5/AIAAAP//AAAAgAAA//8AAACAAAD//wAAAIAAAP//AAAAgP////8AAACA/////wAAAAAAgP9//n8AAACA/3/+fwAAAID/f/5//////wAA/z8AgAAA//8AAACAAAD//wAAAAAAgP9//n//f/9/AAD/PwCA/////wAAAID/////AAAAgP////8AAAAAAID/f/5/AAAAgP9//n8AAACA/3/+fwCA/////wAAAIAAAP//AAAAgAAA//8AAACAAAD//wAAAAAAgP9//n8AgAAA//8AAP//AID/f/5///8AgP9//n///wCA/3/+f///AID/f/5/AID/////AAAAgP////8AAACA/////wAA/////wAA/z//////AAD/P/////8AAP8/AID/////AAD//wCA/3/+f///AID/f/5///8AgP9//n///wCA/3/+f/////8AAP8//3//fwAA/z//f/9/AAD/P/9//38AAP8/AIAAAP//AAAAgAAA//8AAACAAAD//wAAAIAAAP//AAAAgAAA//8AAACAAAD//wAA/////wAA/z//////AAD/P/////8AAP8/AID/////AAAAgP////8AAP9//38AAP8/AAAAgP9//n8AAACA/3/+fwAAAID/f/5//////wAA/z8AAACA/3/+fw==")
+}]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sajas"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4umaj"]
+data = PackedVector3Array(-1.5, -19.5, 5, -5, -19.5, 5, -1.5, 0.5, 5, 1.5, 0.5, 5, 5, 0.5, 5, 1.5, -19.5, 5, 5, 0.5, 5, 5, 0.5, -5, 5, -19.5, -5, 5, 0.5, -5, 5, 0.5, 5, -5, 0.5, -5, -5, 0.5, -5, 5, 0.5, 5, 1.5, 0.5, 5, 5, -19.5, -5, 5, 0.5, -5, -5, 0.5, -5, 1.5, -19.5, 5, 5, 0.5, 5, 5, -19.5, 5, 5, -19.5, 5, 5, 0.5, 5, 5, -19.5, -5, 1.5, -19.5, 5, 5, -19.5, 5, 5, -19.5, -5, -1.5, -19.5, 5, 1.5, -19.5, 5, 5, -19.5, -5, 1.5, 0.5, 5, -1.5, 0.5, 5, -5, 0.5, -5, -1.5, 0.5, 5, -5, 0.5, 5, -5, 0.5, -5, -5, 0.5, -5, -5, 0.5, 5, -5, -19.5, 5, 5, -19.5, -5, -5, 0.5, -5, -5, -19.5, -5, -5, -19.5, 5, -1.5, -19.5, 5, 5, -19.5, -5, -5, -19.5, 5, 5, -19.5, -5, -5, -19.5, -5, -5, -19.5, 5, -5, -19.5, -5, -5, 0.5, -5, -1.5, 0.5, 5, -5, -19.5, 5, -5, 0.5, 5, 1.5, 0.5, 25, -1.5, 0.5, 25, -1.5, 0.5, 5, -1.5, 0.5, 25, -1.5, -19.5, 25, -1.5, 0.5, 5, -1.5, 0.5, 5, 1.5, 0.5, 5, 1.5, 0.5, 25, 1.5, -19.5, 5, -1.5, -19.5, 5, -1.5, -19.5, 25, -1.5, 0.5, 5, -1.5, -19.5, 25, -1.5, -19.5, 5, -1.5, -19.5, 25, 1.5, -19.5, 25, 1.5, -19.5, 5, 1.5, -19.5, 5, 1.5, 0.5, 25, 1.5, 0.5, 5, 1.5, -19.5, 25, 1.5, 0.5, 25, 1.5, -19.5, 5, -1.5, 0.5, 25, 1.5, 0.5, 25, 2.5, 0.5, 30, 1.5, 0.5, 25, 2.5, -19.5, 25, 2.5, 0.5, 25, 1.5, 0.5, 25, 2.5, 0.5, 25, 2.5, 0.5, 30, 2.5, 0.5, 30, 2.5, 0.5, 25, 2.5, -19.5, 25, 2.5, -19.5, 30, 2.5, 0.5, 30, 2.5, -19.5, 25, 1.5, -19.5, 25, 2.5, -19.5, 25, 1.5, 0.5, 25, 2.5, 0.5, 30, 2.5, -19.5, 30, -2.5, -19.5, 30, -2.5, -19.5, 30, 2.5, -19.5, 30, 2.5, -19.5, 25, 1.5, -19.5, 25, -2.5, -19.5, 30, 2.5, -19.5, 25, -1.5, -19.5, 25, -2.5, -19.5, 25, -2.5, -19.5, 30, 1.5, -19.5, 25, -1.5, -19.5, 25, -2.5, -19.5, 30, -1.5, -19.5, 25, -2.5, 0.5, 25, -2.5, -19.5, 25, -1.5, 0.5, 25, 2.5, 0.5, 30, -2.5, 0.5, 25, -2.5, 0.5, 25, 2.5, 0.5, 30, -2.5, 0.5, 30, -2.5, 0.5, 30, 2.5, 0.5, 30, -2.5, -19.5, 30, -2.5, 0.5, 25, -2.5, 0.5, 30, -2.5, -19.5, 30, -1.5, 0.5, 25, -2.5, 0.5, 25, -1.5, -19.5, 25, -2.5, -19.5, 30, -2.5, -19.5, 25, -2.5, 0.5, 25)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sajas"]
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_4umaj"]
+noise = SubResource("FastNoiseLite_sajas")
+
+[sub_resource type="FogMaterial" id="FogMaterial_jlbl0"]
+emission = Color(1, 1, 1, 1)
+density_texture = SubResource("NoiseTexture3D_4umaj")
+
+[sub_resource type="GDScript" id="GDScript_4umaj"]
+script/source = "extends Area3D
+
+
+func _on_body_entered(body):
+	await get_tree().create_timer(2.5).timeout
+	get_tree().reload_current_scene()
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4umaj"]
+size = Vector3(50, 25, 62)
+
+[sub_resource type="GDScript" id="GDScript_jlbl0"]
+script/source = "extends Area3D
+
+
+
+func _on_body_entered(body):
+	get_tree().change_scene_to_file(\"res://Scenes/Finale.tscn\")
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jlbl0"]
+size = Vector3(2, 5, 2)
+
+[node name="Outro" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kgqfv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.999403, -0.0345333, 0, 0.0345333, -0.999403, 0, 7, 0)
+shadow_enabled = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("ArrayMesh_kgqfv")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_sajas")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4umaj")
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+light_data = ExtResource("1_sajas")
+
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13.5, 13)
+size = Vector3(100, 21, 100)
+material = SubResource("FogMaterial_jlbl0")
+
+[node name="CutscenePlayer" parent="." instance=ExtResource("2_4umaj")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0.5)
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = SubResource("GDScript_4umaj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, -17, 13.5)
+shape = SubResource("BoxShape3D_4umaj")
+
+[node name="Area3D2" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = SubResource("GDScript_jlbl0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 27.5)
+shape = SubResource("BoxShape3D_jlbl0")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
+[connection signal="body_entered" from="Area3D2" to="Area3D2" method="_on_body_entered"]

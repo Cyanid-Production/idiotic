@@ -19,6 +19,7 @@ func _input(event):
 		if event.is_action_pressed("RMB") and data.consumable:
 			var effect : String = data.use_effect.keys()[0]
 			GameManager.current_player.add_effect(effect, data.use_effect.get(effect))
+			GameManager.current_player.remove_from_inventory(data.id)
 			queue_free()
 
 func initialize(dta:Item):

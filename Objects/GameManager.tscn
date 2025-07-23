@@ -11,3 +11,5 @@ script = ExtResource("1_81vtd")
 
 [node name="WaveTimer" type="Timer" parent="."]
 one_shot = true
+
+[connection signal="finished" from="MusicPlayer" to="." method="_on_music_player_finished"]

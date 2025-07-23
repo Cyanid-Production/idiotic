@@ -9,4 +9,5 @@ func _ready():
 
 func _on_timer_timeout():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	GameManager.get_node("MusicPlayer").stop()
 	get_tree().change_scene_to_file("res://Scenes/Test.tscn")

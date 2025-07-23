@@ -1,0 +1,11 @@
+keys,en,ru
+PLAYER_NAME,Stanger,Странник
+ZOMBIE_NAME,Exhausted wanderer,Измученный странник
+SHOOTER_NAME,Soul spewer,Изрыгатель душ
+DODGER_NAME,Dodger,Ловкач
+PLAYER_DESC,Creep.,Мерзкий тип.
+ZOMBIE_DESC,A wanderer who could not stand the torment. Will try to catch up and hit you.,"Странник, что не выдержал мучений. Будет пытаться догнать и ударить тебя."
+SHOOTER_DESC,Overseer of wanderers. Can shoot their souls.,Надзиратель над странниками. Может стрелять их душами.
+DODGER_DESC,A wanderer who has gone insane. He rushes about at an absurd speed.,"Странник, что сошел с ума. Метается с абсурдной скоростью."
+BOSS_NAME,Last Trial,Последнее испытание
+BOSS_DESC,0100010001000101010011000100010101010100010001010010000001010100010010000100100101010011,1101000010100011110100001001010011010000100100001101000010011011110100001001100000100000110100001010110111010000101000101101000010011110

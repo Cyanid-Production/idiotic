@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dvlwg60i03ltu"]
+[gd_scene load_steps=29 format=3 uid="uid://dvlwg60i03ltu"]
 
 [ext_resource type="Script" uid="uid://cvtl56jy5wyfp" path="res://Scripts/ui.gd" id="1_cyweb"]
 [ext_resource type="Script" uid="uid://cifq6de46ei3x" path="res://Scripts/Nodes/trap_menu.gd" id="2_r3uuq"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dr0cjv32msw5d" path="res://Textures/UI/Overlays/blood_overlay_right_bottom.png" id="5_ynfbr"]
 [ext_resource type="Shader" uid="uid://fyxvg78pqdqt" path="res://Resources/Shaders/HealthBar.gdshader" id="7_xjmjv"]
 [ext_resource type="FontFile" uid="uid://1bmcp2r7baky" path="res://Resources/Fonts/Daneehand.ttf" id="8_facvm"]
+[ext_resource type="Texture2D" uid="uid://b28a3dismbk2a" path="res://Textures/UI/Overlays/wave_counter.png" id="9_2jyvr"]
 [ext_resource type="Theme" uid="uid://cmbofmpyce526" path="res://Resources/Themes/menu_theme.tres" id="15_2jyvr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ct24o"]
@@ -44,6 +45,21 @@ font_size = 45
 font_color = Color(0, 0, 0, 1)
 outline_size = 5
 
+[sub_resource type="Animation" id="Animation_xm6e5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_84vmj"]
 resource_name = "flash"
 length = 0.5
@@ -58,21 +74,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_xm6e5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xm6e5"]
@@ -201,6 +202,10 @@ _data = {
 &"blood4": SubResource("Animation_433n8")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_nogks"]
+font = ExtResource("8_facvm")
+font_size = 40
+
 [sub_resource type="LabelSettings" id="LabelSettings_ynfbr"]
 font = ExtResource("8_facvm")
 font_size = 20
@@ -313,6 +318,48 @@ texture = ExtResource("5_ynfbr")
 libraries = {
 &"": SubResource("AnimationLibrary_nogks")
 }
+
+[node name="WaveControl" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -400.0
+offset_top = 1.0
+offset_bottom = 251.0
+grow_horizontal = 0
+
+[node name="CurrentLabel" type="Label" parent="WaveControl"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -30.0
+offset_right = 220.0
+offset_bottom = 30.0
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_nogks")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="WaveControl"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -62.5
+offset_right = -50.0
+offset_bottom = 62.5
+grow_horizontal = 0
+grow_vertical = 2
+max_value = 15.0
+rounded = true
+fill_mode = 2
+texture_progress = ExtResource("9_2jyvr")
 
 [node name="TrapMenu" type="Control" parent="."]
 visible = false
@@ -432,6 +479,7 @@ theme_override_constants/v_separation = 10
 columns = 6
 
 [node name="InteractionIcon" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

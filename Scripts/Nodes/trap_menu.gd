@@ -8,7 +8,8 @@ extends Control
 var traps_array : Array[Trap] = [
 	preload("res://Resources/Traps/SpikeTrap1.tres"),
 	preload("res://Resources/Traps/SpikeTrap2.tres"),
-	preload("res://Resources/Traps/SpikeTrap3.tres")
+	preload("res://Resources/Traps/SpikeTrap3.tres"),
+	preload("res://Resources/Traps/DefenseTrap1.tres")
 ]
 var current_trap_id : int
 

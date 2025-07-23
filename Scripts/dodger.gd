@@ -37,7 +37,7 @@ func _physics_process(delta):
 	else:
 		direction = Vector3(0.0,0.0,0.0)
 	if target_cast.is_colliding() and not body_animator.current_animation == "attack_1":
-		if target_cast.get_collider() != null and target_cast.get_collider().is_in_group("Obstacles"):
+		if target_cast.get_collider().is_in_group("Obstacles"):
 			if target_cast.get_collider().locked:
 				body_anim.rpc("attack_1")
 			else:
@@ -72,7 +72,7 @@ func die():
 	var rand_var = randi_range(0,50)
 	if rand_var == 25:
 		death_drop.rpc()
-	GameManager.bestiary_objects.set("zombie",true)
+	GameManager.bestiary_objects.set("DODGER",true)
 	queue_free()
 
 @rpc("any_peer", "call_local")
@@ -97,4 +97,4 @@ func _on_animator_animation_finished(anim_name):
 					pass
 				else:
 					if target_cast.get_collider().has_method("take_damage"):
-						target_cast.get_collider().take_damage(20.0)
+						target_cast.get_collider().take_damage(10.0)

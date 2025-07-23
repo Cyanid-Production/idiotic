@@ -136,10 +136,10 @@ bind/32/bone = -1
 bind/32/pose = Transform3D(-14.4027, -12.2578, 3.2574, -12.6807, 14.0076, -3.36003, 0.231507, 4.67407, 18.6122, 0.469949, -1.06978, 3.53393)
 
 [sub_resource type="Gradient" id="Gradient_j7nlw"]
-offsets = PackedFloat32Array(0.278689, 1)
-colors = PackedColorArray(0.392157, 0, 0, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0.190217, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_6pakv"]
+noise_type = 3
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0jtvj"]
 seamless = true
@@ -149,31 +149,6 @@ noise = SubResource("FastNoiseLite_6pakv")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6pakv"]
 cull_mode = 2
 albedo_texture = SubResource("NoiseTexture2D_0jtvj")
-
-[sub_resource type="Animation" id="Animation_0jtvj"]
-resource_name = "walk_1"
-length = 0.5
-tracks/0/type = "rotation_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Armature/Skeleton3D:mixamorig_RightUpLeg")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 1.67145e-05, -0.000317123, 0.998582, 0.0532338, 0.15, 1, -0.0103057, 0.254017, 0.967134, 0.00458479, 0.35, 1, 0.010338, -0.25463, 0.961978, 0.098255, 0.5, 1, 1.67145e-05, -0.000317123, 0.998582, 0.0532338)
-tracks/1/type = "rotation_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Armature/Skeleton3D:mixamorig_LeftUpLeg")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0.000191945, 0.00363983, 0.998576, -0.0532319, 0.15, 1, -0.00817596, -0.124481, 0.991759, -0.0291731, 0.35, 1, 0.0167748, 0.257504, 0.961126, -0.098221, 0.5, 1, 0.000191945, 0.00363983, 0.998576, -0.0532319)
-tracks/2/type = "rotation_3d"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Armature/Skeleton3D:mixamorig_RightLeg")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = PackedFloat32Array(0, 1, -0.209476, -0.00736982, 0.0606232, 0.975905, 0.15, 1, -0.662635, -0.00265188, -0.0419676, 0.747761, 0.5, 1, -0.209476, -0.00736982, 0.0606232, 0.975905)
 
 [sub_resource type="Animation" id="Animation_233qs"]
 length = 0.001
@@ -245,6 +220,31 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = PackedFloat32Array(0, 1, -0.160614, -0.00506416, 0.0169191, 0.986859, 0.075, 1, -0.632114, -0.0129069, 0.0336937, 0.774035, 0.15, 1, -0.160614, -0.00506416, 0.0169191, 0.986859)
 
+[sub_resource type="Animation" id="Animation_0jtvj"]
+resource_name = "walk_1"
+length = 0.5
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D:mixamorig_RightUpLeg")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 1.67145e-05, -0.000317123, 0.998582, 0.0532338, 0.15, 1, -0.0103057, 0.254017, 0.967134, 0.00458479, 0.35, 1, 0.010338, -0.25463, 0.961978, 0.098255, 0.5, 1, 1.67145e-05, -0.000317123, 0.998582, 0.0532338)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D:mixamorig_LeftUpLeg")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.000191945, 0.00363983, 0.998576, -0.0532319, 0.15, 1, -0.00817596, -0.124481, 0.991759, -0.0291731, 0.35, 1, 0.0167748, 0.257504, 0.961126, -0.098221, 0.5, 1, 0.000191945, 0.00363983, 0.998576, -0.0532319)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Armature/Skeleton3D:mixamorig_RightLeg")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -0.209476, -0.00736982, 0.0606232, 0.975905, 0.15, 1, -0.662635, -0.00265188, -0.0419676, 0.747761, 0.5, 1, -0.209476, -0.00736982, 0.0606232, 0.975905)
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_64fu3"]
 _data = {
 &"RESET": SubResource("Animation_233qs"),
@@ -266,6 +266,7 @@ properties/1/replication_mode = 2
 [node name="Dodger" type="CharacterBody3D"]
 collision_layer = 8
 collision_mask = 33
+floor_max_angle = 1.65806
 script = ExtResource("1_233qs")
 
 [node name="Body" type="Node3D" parent="."]

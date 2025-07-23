@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bs8i60tvax04m"]
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://bs8i60tvax04m"]
 
 [ext_resource type="Script" uid="uid://burv2cpscxnkr" path="res://Scripts/Data/item_data.gd" id="1_lpcqb"]
+[ext_resource type="AudioStream" uid="uid://hdhmcl7fi2bs" path="res://Sounds/Items/cloth_1.wav" id="2_t1k6a"]
 [ext_resource type="Texture2D" uid="uid://dkafn1spe4rjy" path="res://Textures/UI/Items/cloth_icon.png" id="2_toqva"]
 
 [resource]
@@ -9,5 +10,8 @@ name_code = "CLOTHNAME"
 id = "cloth"
 texture = ExtResource("2_toqva")
 type = 0
+consumable = false
+use_effect = {}
 description_code = "CLOTHDESC"
+sound = ExtResource("2_t1k6a")
 metadata/_custom_type_script = "uid://burv2cpscxnkr"
