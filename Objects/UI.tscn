@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dvlwg60i03ltu"]
+[gd_scene load_steps=30 format=3 uid="uid://dvlwg60i03ltu"]
 
 [ext_resource type="Script" uid="uid://cvtl56jy5wyfp" path="res://Scripts/ui.gd" id="1_cyweb"]
 [ext_resource type="Script" uid="uid://cifq6de46ei3x" path="res://Scripts/Nodes/trap_menu.gd" id="2_r3uuq"]
@@ -209,6 +209,10 @@ font_size = 40
 [sub_resource type="LabelSettings" id="LabelSettings_ynfbr"]
 font = ExtResource("8_facvm")
 font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_2jyvr"]
+font = ExtResource("8_facvm")
+font_size = 80
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -556,6 +560,24 @@ layout_mode = 2
 theme = ExtResource("15_2jyvr")
 theme_override_colors/font_color = Color(0.717647, 0, 0, 1)
 text = "EXT2"
+
+[node name="StartLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = 210.0
+offset_right = 500.0
+offset_bottom = 460.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "START"
+label_settings = SubResource("LabelSettings_2jyvr")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="visibility_changed" from="TrapMenu" to="TrapMenu" method="_on_visibility_changed"]
 [connection signal="pressed" from="ExitMenu/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]

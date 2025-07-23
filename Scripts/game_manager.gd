@@ -98,6 +98,7 @@ func start_game():
 	get_parent().get_node("Test/Map/EnemySpawner/Timer").start()
 	set_soundtrack(load("res://Music/light-slaughter.ogg"))
 	get_tree().get_current_scene().get_node("Map/House/Room2/Objects/Altar/RechargeTimer").start()
+	GameManager.current_player.ui.get_node("StartLabel").hide()
 
 func game_reset():
 	print("RESET")
