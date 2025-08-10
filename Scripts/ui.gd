@@ -81,9 +81,8 @@ func _physics_process(_delta):
 		$ExitMenu.visible = !$ExitMenu.visible
 
 func _on_menu_button_pressed():
-	get_tree().get_current_scene().get_node("Menu").enable()
-	get_tree().get_current_scene().get_node("Map").queue_free()
 	GameManager.get_node("MusicPlayer").stop()
+	get_tree().reload_current_scene()
 
 func _on_quit_button_pressed():
 	GameManager.save_data()

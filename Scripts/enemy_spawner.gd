@@ -8,11 +8,15 @@ extends Node3D
 
 var wave_passed : int = 0
 
+
+func _ready():
+	wave_passed = 0
+
 @rpc("any_peer", "call_local")
 func spawn_enemy():
 	alert_player.pitch_scale = (1.5 - (wave_passed/10.0))
-	wave_passed += 1
-	GameManager.current_wave += 1
+	wave_passed += 15
+	GameManager.current_wave += 15
 	GameManager.cast_update()
 	spawn_timer.wait_time += 2.0
 	alert_player.play()

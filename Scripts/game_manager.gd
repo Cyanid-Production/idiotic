@@ -2,6 +2,7 @@ extends Node
 
 
 signal on_game_started
+signal on_game_reset
 
 var players_amount : int = 0
 
@@ -13,7 +14,7 @@ var on_host : bool
 var current_profession : Profession
 
 var current_wave : int = 0
-var wave_enemy_amount = 2
+var wave_enemy_amount : int = 2
 var wave_countdown : int = 30
 
 var grain_display : bool = true
@@ -98,7 +99,9 @@ func start_game():
 	get_parent().get_node("Test/Map/EnemySpawner/Timer").start()
 	set_soundtrack(load("res://Music/light-slaughter.ogg"))
 	get_tree().get_current_scene().get_node("Map/House/Room2/Objects/Altar/RechargeTimer").start()
-	GameManager.current_player.ui.get_node("StartLabel").hide()
+	current_player.ui.get_node("StartLabel").hide()
+	current_wave = 0
+	wave_update()
 
 func game_reset():
 	print("RESET")
@@ -120,6 +123,7 @@ func set_soundtrack(snd:AudioStream,vol:float=0.0,ptc:float=1.0):
 	$MusicPlayer.volume_db = vol
 	$MusicPlayer.pitch_scale = ptc
 	$MusicPlayer.play()
+	print("CURRENT SOUNDTRACK:"+str(snd))
 
 @rpc("any_peer", "call_local")
 func instasound(snd:AudioStream,caller:Node=self,vol:float=0.0,ptc:float=1.0):

@@ -49,6 +49,9 @@ func _ready():
 	ui.refresh_inventory()
 	ui.show()
 	
+	ui.health_bar.material.set_shader_parameter("height", health / 100.0)
+	ui.health_label.text = str(health)
+	
 	GameManager.current_player = self
 
 func _unhandled_input(event):

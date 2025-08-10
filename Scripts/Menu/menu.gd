@@ -9,6 +9,7 @@ var enet_peer = ENetMultiplayerPeer.new()
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	GameManager.game_reset()
 
 func disable():
 	hide()
@@ -19,8 +20,6 @@ func enable():
 	show()
 	$SubViewportContainer/SubViewport/Objects.show()
 	$Control/TabContainer/ProfessionMenu/SubViewportContainer/SubViewport/Objects.show()
-	await get_tree().physics_frame
-	GameManager.game_reset()
 
 func ready_check():
 	if GameManager.current_profession != null:

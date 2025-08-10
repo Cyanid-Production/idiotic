@@ -652,7 +652,7 @@ use_external_skeleton = true
 external_skeleton = NodePath("../../Body/Armature/Skeleton3D")
 
 [node name="Camera" type="Node3D" parent="Attachments/HeadAttachment"]
-transform = Transform3D(-1.99776, -0.0685499, -0.0653789, -0.0762991, 1.98249, 0.252788, 0.0561423, 0.254998, -1.98288, -0.0036784, 0.336586, 0.174667)
+transform = Transform3D(-1.99776, -0.0685498, -0.0653786, -0.0762991, 1.98249, 0.252788, 0.0561423, 0.254998, -1.98288, -0.0036784, 0.336586, 0.174667)
 
 [node name="Camera3D" type="Camera3D" parent="Attachments/HeadAttachment/Camera"]
 fov = 60.0
@@ -671,14 +671,17 @@ collide_with_areas = true
 [node name="BuildCast" type="RayCast3D" parent="Attachments/HeadAttachment/Camera"]
 target_position = Vector3(0, 0, -5)
 
-[node name="Flashlight" type="SpotLight3D" parent="Attachments/HeadAttachment/Camera"]
-visible = false
-spot_angle = 25.0
-
 [node name="HandAttachment" type="BoneAttachment3D" parent="Attachments"]
 transform = Transform3D(-0.340898, 0.0601784, 0.36078, -0.138198, -0.477825, -0.0508825, 0.338657, -0.134413, 0.342407, 0.354816, 0.849464, -0.235828)
 bone_name = "mixamorig_RightHandIndex4"
 bone_idx = 24
+use_external_skeleton = true
+external_skeleton = NodePath("../../Body/Armature/Skeleton3D")
+
+[node name="SpineAttachment" type="BoneAttachment3D" parent="Attachments"]
+transform = Transform3D(-0.491681, 0.00654727, 0.0905937, 0.00820343, 0.499862, 0.00839724, -0.0904587, 0.00974388, -0.491653, 0.00228413, 1.16524, 0.00110821)
+bone_name = "mixamorig_Spine"
+bone_idx = 1
 use_external_skeleton = true
 external_skeleton = NodePath("../../Body/Armature/Skeleton3D")
 
